@@ -1,6 +1,0 @@
-/target
-*.class
-*.lst
-*.iml
-*.xml
-!pom.xml
