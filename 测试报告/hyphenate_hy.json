@@ -1,0 +1,3973 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).  \n\n**Note:**\n\n`org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                         \n`app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).           \n`Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                            \n",
+        "version": "1.0.2",
+        "title": "Hyphenate REST APIs"
+    },
+    "host": "a1.easemob.com",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "",
+            "sortWeight": 0
+        },
+        {
+            "name": "Users",
+            "description": "",
+            "sortWeight": 1
+        },
+        {
+            "name": "Messages",
+            "description": "",
+            "sortWeight": 2
+        },
+        {
+            "name": "Upload and Download Files",
+            "description": "",
+            "sortWeight": 3
+        },
+        {
+            "name": "Chat History",
+            "description": "",
+            "sortWeight": 4
+        },
+        {
+            "name": "Groups",
+            "description": "",
+            "sortWeight": 5
+        },
+        {
+            "name": "Chat Rooms",
+            "description": "",
+            "sortWeight": 6
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": [],
+    "produces": [],
+    "paths": {
+        "/{org_name}/{app_name}/chatfiles": {
+            "post": {
+                "tags": [
+                    "Upload and Download Files"
+                ],
+                "summary": "Upload a File",
+                "description": "Warning: File cannot be over 10MB, otherwise will fail.\nImportant: Be sure keep the \"uuid\" and \"share-secret\", which are requirement when downloading particular file.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "restrict-access",
+                        "in": "header",
+                        "description": "\"restrict-access\" determines whether later the file require \"share-secret\" for access or allow public access. ",
+                        "required": false,
+                        "type": "boolean",
+                        "default": "",
+                        "format": ""
+                    },
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "",
+                        "required": true,
+                        "type": "file",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": " Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 0
+            }
+        },
+        "/{org_name}/{app_name}/chatfiles/{uuid}": {
+            "get": {
+                "tags": [
+                    "Upload and Download Files"
+                ],
+                "summary": "Download a File",
+                "description": "Important:\n1. Include the share-secret from HTTP header \n2. Include uuid from the response of a successful file uploading, which is the file identifier\n",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid, the file identifier, from previous successful uploading reponse",
+                        "required": true,
+                        "type": "string",
+                        "default": "2b49c3b0-945e-11e6-940c-7705363b29dd",
+                        "format": ""
+                    },
+                    {
+                        "name": "share-secret",
+                        "in": "header",
+                        "description": "share-secret from previous successful uploading response",
+                        "required": true,
+                        "type": "string",
+                        "default": "K0nDupReEeaIDxMU2xxA1MQRdbbpSbahSXyalxCt8LFY1he0",
+                        "format": ""
+                    },
+                    {
+                        "name": "thumbnail",
+                        "in": "header",
+                        "description": "The request will return thumbnail if the tag of “thumbnail: true” is explicitly put in the header",
+                        "required": true,
+                        "type": "boolean",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 1
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Get All the Groups",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 4
+            },
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Create a Group",
+                "description": "Group settings:\n1. Group name\n2. Group description\n3. Public vs. Private Group\n4. Max number of member (including admin)\n5. If public group, allow join freely vs. require permission from admin\n6. allowinvites property. If public group, then allowinvites is false. If private group, then allowinvites is true. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "\"desc\": group description. Note: Use key \"desc\".                                                                                                                                           public vs. private: group type.                                                                       maxusers: (Optional Attribute, default is 200). The max number of group members.                                     approval: (Optional Attribute, default is true). Does user need permission to join the group?                          owner: The owner (admin) of the group.                                                          members: (Optional Attribute) Group members. Ignore the attribute if no member to be added. The group owner does not represent as a group member. ",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The owner doesn't exist",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 1
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 2
+                    }
+                },
+                "sortWeight": 0
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_ids}": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Get Group(s) Details",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_ids",
+                        "in": "path",
+                        "description": "Separate group ID by ','. e.g. {group_id1},{group_id2}",
+                        "required": true,
+                        "type": "string",
+                        "default": "254014966611315244,254017708478171692",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "The group ID cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 5
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_id}": {
+            "put": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Update Group Details",
+                "description": "The message body only allows groupname, description, and maxusers.\n\nNote: Use '+' to replace space if modifying groupname ​and description. E.g., use \"test+group\" instead of \"test group\".\n\nWarning: If group cannot be found or operation failed, then the response will still return HTTP code 200, but key-value are \"maxusers\"=false, \"groupname\"=false, and \"description\"=false. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "256991813640915400",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref":"#/definitions/ModifyGroup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 1
+            },
+            "delete": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Delete a Group",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5XX": {
+                        "description": " Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 2
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_id}/blocks/users": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Get Group Blocked Users",
+                "description": "Get the blacklist of blocked users. Blocked user cannot see nor receive group message.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "Group ID cannot be found",
+                        "sortWeight": 2
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 3
+                    }
+                },
+                "sortWeight": 45
+            },
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Block Group Members in Batch",
+                "description": "Block multiple group members by adding the users to the group blacklist. Max 60 users at a time. Blocked users will receive an event, \"You are kicked out of the group {groupid}\". Blocked user will not able to see nor receive group message.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Separate usernames by ','",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserNames"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "Group ID cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 55
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_id}/blocks/users/{usernames}": {
+            "delete": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Unblock Group Members in Batch",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    },
+                    {
+                        "name": "usernames",
+                        "in": "path",
+                        "description": "Separate usernames by ','",
+                        "required": true,
+                        "type": "string",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "Group ID cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 65
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_id}/blocks/users/{username}": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Block a Group Member",
+                "description": "Block a group member by adding the user to the group blacklist. \nBlocked user will receive an event, \"You are kicked out of the group {groupid}\".\nBlocked user will not able to see nor  receive group message. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The user dosen't exist",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "Group ID cannot be found",
+                        "sortWeight": 2
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 3
+                    }
+                },
+                "sortWeight": 50
+            },
+            "delete": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Unblock a Group Member",
+                "description": "Unblock group member by removing the user from group blacklist. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "testapp",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The user dosen't exist",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "Group ID cannot be found",
+                        "sortWeight": 2
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 3
+                    }
+                },
+                "sortWeight": 60
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_id}/users": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Get a List of Members of Group",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "The group ID cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 15
+            },
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Add Multiple Members to Group",
+                "description": "Warning: Add max 60 members once at a time. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "256991813640915400",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Separate usernames by ','",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserNames"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "User(s) cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "The group ID cannot be found",
+                        "sortWeight": 2
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 3
+                    }
+                },
+                "sortWeight": 25
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_id}/users/{members}": {
+            "delete": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Remove multiple Member from the Group",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    },
+                    {
+                        "name": "members",
+                        "in": "path",
+                        "description": "Use ',' to separate usernames",
+                        "required": true,
+                        "type": "string",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 35
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{group_id}/users/{username}": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Add a Member to Group",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "256991813640915400",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The user doesn't exist",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "The group ID cannot be found",
+                        "sortWeight": 2
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 3
+                    }
+                },
+                "sortWeight": 20
+            },
+            "delete": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Remove a Member from the Group",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The user dosen't exist",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "The group ID does not exist",
+                        "sortWeight": 2
+                    },
+                    "5xx": {
+                        "description": " Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 3
+                    }
+                },
+                "sortWeight": 30
+            }
+        },
+        "/{org_name}/{app_name}/chatgroups/{groupid}": {
+            "put": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Update Group Owner",
+                "description": "Transfer group ownership by changing owner. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "groupid",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254017708478171692",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Use the key \"newowner\" and ${new_owner_user} is the username of new group owner",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NewOwner"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 40
+            }
+        },
+        "/{org_name}/{app_name}/chatmessages": {
+            "get": {
+                "tags": [
+                    "Chat History"
+                ],
+                "summary": "Get Message History",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "ql",
+                        "in": "query",
+                        "description": "Get messages based on starting  timestamp. Could also alter the comparison to get later, equal, or earlier messages. ex. ql=select+*+where+timestamp>1403164734226 or =<[timestamp]",
+                        "required": false,
+                        "type": "string",
+                        "default": "select+*+where+timestamp>1403164734226",
+                        "format": ""
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "total number of messages per page by pagination at a time",
+                        "required": false,
+                        "type": "string",
+                        "default": "3",
+                        "format": ""
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "Get messages by pagination. Obtained \"cursor\" from the previous GET messages call response.",
+                        "required": false,
+                        "type": "string",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Incorrect parameter structure",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 0
+            }
+        },
+        "/{org_name}/{app_name}/chatrooms": {
+            "get": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Get All the Chat Rooms",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 10
+            },
+            "post": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Create a Chat Room",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Chatroom"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 0
+            }
+        },
+        "/{org_name}/{app_name}/chatrooms/{chatroom_id}": {
+            "get": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Get Chat Room Details",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "chatroom_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254236356207708624",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "Chat room cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 15
+            },
+            "put": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Update Chat Room Details",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "chatroom_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254236356207708624",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ModifyChatroom"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 2
+            },
+            "delete": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Delete a Chat Room",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "chatroom_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254235208700660172",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 5
+            }
+        },
+        "/{org_name}/{app_name}/chatrooms/{chatroom_id}/users": {
+            "post": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Add Chat Room Members in Batch",
+                "description": "Add max 60 group members at a time.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "chatroom_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254235208700660172",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "content",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserNames"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Chat room or user cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 25
+            }
+        },
+        "/{org_name}/{app_name}/chatrooms/{chatroom_id}/users/{usernames}": {
+            "delete": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Remove Chat Room Members in Batch",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "chatroom_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254235208700660172",
+                        "format": ""
+                    },
+                    {
+                        "name": "usernames",
+                        "in": "path",
+                        "description": "Separate usernames by ','",
+                        "required": true,
+                        "type": "string",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The user cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 35
+            }
+        },
+        "/{org_name}/{app_name}/chatrooms/{chatroom_id}/users/{username}": {
+            "post": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Add a Chat Room Member",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "chatroom_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254235208700660172",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The user cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 20
+            },
+            "delete": {
+                "tags": [
+                    "Chat Rooms"
+                ],
+                "summary": "Remove a Chat Room Member",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "chatroom_id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "254235208700660172",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The user cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 30
+            }
+        },
+        "/{org_name}/{app_name}/messages": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Send a Message",
+                "description": "Send a message to user(s) and group(s).               \nPlease refer to the Hyphenate docs for further details about message body. https://docs.hyphenate.io/docs/post-messages",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Message types: Text, image, audio message, video, command, etc. Please refer to the Hyphenate docs for further details about message body. https://docs.hyphenate.io/docs/post-messages",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Msg"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Incorrect body structure",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 0
+            }
+        },
+        "/{org_name}/{app_name}/token": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Request an Authentication Token",
+                "description": "All of the Hyphenate API endpoints requires authentication token for session, unless specified otherwise.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "client_id and client_secret can be found in the application details page of the Hyphenate console",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{"description":"OK","schema":{"type":"string"}},
+                    "400": {
+                        "description": "usually an invalid value for client_id or client_secret",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes) for more info",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 0
+            }
+        },
+        "/{org_name}/{app_name}/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get Users in Batch",
+                "description": "Get a list of users",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Get specified number of user by setting the batch limit with parameter \"limit\". Otherwise the API returns the 10 most recent created users by default. ",
+                        "required": false,
+                        "type": "string",
+                        "default": "3",
+                        "format": ""
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "Pagination: If the query results more objects than value of limit, then the response will carry an extra attribute “cursor”, the value points to the next page. There is No cursor on the last page or if the returning objects is less than batch limit value.",
+                        "required": false,
+                        "type": "string",
+                        "default": "LTgzNDAxMjM3OTpreS0yeXBSSkVlYWZZODl3bXppMTFn\"",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "200":{"description":"OK","schema":{"type":"object"}},
+                    "401": {
+                        "description": "Unauthorized [without token, token error, or token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 11
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a User",
+                "description": "Register an IM user account respects to org and app keys. \nNote: There're 2 types of registration, 'open' and 'authorized'. 'open' registration does not require admin authentication, but 'authorized' does. See the application -> \"overview\" -> \"User Registration Permission\" in Hyphenate console. \n'Authorized' registration is recommended, which prevents malicious attempt to create junk user account from the ones obtained the URL. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": false,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "To create multiple users at once: [    {        \"username\": \"user1\",        \"password\": \"123456\"    },    {        \"username\": \"user2\",        \"password\": \"123456\"    }]",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RegisterUsers"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "User(s) already exists. The username or password is empty or illegal",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 5
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete Users in Batch",
+                "description": "Delete total number of N user accounts in batch. Recommend set N range 100~500 at a time to ensure the performance. Cannot specified user account in deletion, check the response to see which user accounts are deleted.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Total number of user accounts to be deleted",
+                        "required": true,
+                        "type": "string",
+                        "default": "3",
+                        "format": ""
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "Cursor value from previous deletion",
+                        "required": false,
+                        "type": "string",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 13
+            }
+        },
+        "/{org_name}/{app_name}/users/{owner_username}/blocks/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a List of Blocked Users",
+                "description": "Get a List of Blocked Users by the user.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name ",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "owner_username",
+                        "in": "path",
+                        "description": "The user who is requesting blacklist",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User or blacklist cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 35
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Block User(s)",
+                "description": "Block one or multiple users by adding to blacklist. Blocked user cannot send message.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "owner_username",
+                        "in": "path",
+                        "description": "The user who initiated the blocking",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "usernames",
+                        "description": "Users to be blocked. Use ',' to separate the usernames",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserNames"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Blocked user cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)\t",
+                        "sortWeight": 2
+                    }
+                },
+                "sortWeight": 40
+            }
+        },
+        "/{org_name}/{app_name}/users/{owner_username}/blocks/users/{blocked_username}": {
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Unblock User(s)",
+                "description": "Unblock one or multiple users by removing them from blacklist. Max 60 users at a time. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "owner_username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    },
+                    {
+                        "name": "blocked_username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 2
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 3
+                    }
+                },
+                "sortWeight": 45
+            }
+        },
+        "/{org_name}/{app_name}/users/{owner_username}/contacts/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a List of Contacts",
+                "description": "Get user's contact list",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "owner_username",
+                        "in": "path",
+                        "description": "The user who is requesting contact list",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User or the list of contact cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 30
+            }
+        },
+        "/{org_name}/{app_name}/users/{owner_username}/contacts/users/{friend_username}": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Add Contact for User",
+                "description": "Add contact for user. Contact to be added must under the same application as the user.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "owner_username",
+                        "in": "path",
+                        "description": "user",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    },
+                    {
+                        "name": "friend_username",
+                        "in": "path",
+                        "description": "contact to be added",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User or contact to be added cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)\t",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 20
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Remove Contact from User",
+                "description": "Remove contact from user's contact list. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name ",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "owner_username",
+                        "in": "path",
+                        "description": "user",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    },
+                    {
+                        "name": "friend_username",
+                        "in": "path",
+                        "description": "contact to be removed",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User or friend to be removed cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)\t",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 25
+            }
+        },
+        "/{org_name}/{app_name}/users/{owner_username}/offline_msg_count": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get Offline Message Count",
+                "description": "Get the number of offline messages",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "owner_username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 55
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a User",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: HTTP Error Codes(https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 10
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update User's APNs Display Name",
+                "description": "Update user's APNs display name for iOS push notification.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": false,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "update APNs display name by key \"nickname\"",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nickname"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 15
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete a User",
+                "description": "Warning: Delete a user will also delete the group and chat room if the specified user is the admin of the group and chat room. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "user to be deleted",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": " Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 12
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/activate": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Activate User Account",
+                "description": "Activate a deactivated user account. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": " Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 65
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/deactivate": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Deactivate User Account",
+                "description": "Deactivate a user account. User will not be able to login. ",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 66
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/disconnect": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Logout User",
+                "description": "Force logout a user",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 75
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/joined_chatgroups": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a List of Groups of User Joined",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 80
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/joined_chatrooms": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get All the Chat Rooms of User Joined",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "user1",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 1
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 2
+                    }
+                },
+                "sortWeight": 85
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/offline_msg_status/{msg_id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get Offline Message Status",
+                "description": "Get offline message status via message ID. Get message ID via the method get message history.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": " Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    },
+                    {
+                        "name": "msg_id",
+                        "in": "path",
+                        "description": "Message ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User or message cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 60
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/password": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Reset User's Password",
+                "description": "To enhance security, we recommend update user's Hyphenate IM user account password if the user's app password on developer server is updated.",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": false,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Set a new password by using key \"newpassword\"",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NewPassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 14
+            }
+        },
+        "/{org_name}/{app_name}/users/{username}/status": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get User Online Status",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "default": "${username}",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized: missing token, token error, token expired",
+                        "sortWeight": 0
+                    },
+                    "404": {
+                        "description": "User cannot be found",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)\t",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 50
+            }
+        }
+    },
+    "definitions": {
+        "cat": {
+            "type": "string",
+            "description": "cat is cute"
+        },
+		"RegisterUsers": {
+			"type": "array", 
+			"items": {
+				"$ref": "#/definitions/User"
+			}
+		},
+		"User":{
+			"type": "object",
+			"properties":{
+				"username":{"type":"string"},
+				"password":{"type":"string"}
+			}
+		},
+		"NewPassword":{
+			"type": "object",
+			"properties":{
+				"newpassword":{"type":"string"}
+			}
+		},
+		"Nickname":{
+			"type":"object",
+			"properties":{
+				"nickname":{"type":"string"}
+			}
+		},
+		"UserNames":{
+			"type":"object",
+			"properties":{
+				"usernames":{"$ref": "#/definitions/UserName"}
+			}
+		},
+		"UserName":{
+			"type":"array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"Msg":{
+			"type":"object",
+			"properties":{
+				"target_type":{"type":"string"},
+				"target":{"$ref": "#/definitions/UserName"},
+				"msg":{"$ref": "#/definitions/MsgContent"},
+				"from":{"type":"string"},
+				"ext":{"type":"string"}
+			}
+		},
+		"MsgContent":{
+			"type":"object",
+			"properties":{
+				"type":{
+					"type":"string",
+					"enum": [
+                        "txt", 
+                        "img", 
+                        "audio",
+						"video",
+						"cmd"
+                    ]
+				},
+				"msg":{
+					"type":"string"
+				}
+			}
+		},
+		"Group":{
+			"type":"object",
+			"properties":{
+				"groupname":{"type":"string"},
+				"desc":{"type":"string"},
+				"public":{"type":"boolean"},
+				"maxusers":{"type":"integer"},
+				"approval":{"type":"boolean"},
+				"owner":{"type":"string"},
+				"members":{"$ref": "#/definitions/UserName"}
+			}
+		},
+		"ModifyGroup":{
+			"type":"object",
+			"properties":{
+				"groupname":{"type":"string"},
+				"description":{"type":"string"},
+				"maxusers":{"type":"integer"}
+			}
+		},
+		"NewOwner":{
+			"type":"object",
+			"properties":{
+				"newowner":{"type":"string"}
+			}
+		},
+		"Chatroom":{
+			"type":"object",
+			"properties":{
+				"name":{"type":"string"},
+				"description":{"type":"string"},
+				"maxusers":{"type":"integer"},
+				"owner":{"type":"string"},
+				"members":{"$ref":"#/definitions/UserName"}
+			}
+		},
+		"ModifyChatroom":{
+			"type":"object",
+			"properties":{
+				"name":{"type":"string"},
+				"description":{"type":"string"},
+				"maxusers":{"type":"integer"}
+			}
+		},
+		"Token":{
+			"type":"object",
+			"properties":{
+				"grant_type":{
+					"type":"string",
+					"example":"client_credentials"
+				},
+				"client_id":{
+					"type":"string",
+					"example":"YXA65VqmwJRAEeaQYDm4m8r7zw"
+				},
+				"client_secret":{
+					"type":"string",
+					"example":"YXA6QVcnW-CSLVu7O8jrRBZX5oodpaA"
+				}
+			}
+		}
+	}
+}

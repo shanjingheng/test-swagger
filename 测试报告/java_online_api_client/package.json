@@ -1,0 +1,18 @@
+{
+  "name": "hyphenate_rest_ap_is",
+  "version": "1.0.2",
+  "description": "Hyphenate_Server_REST_API_Swagger_is_designated_to_provide_better_documentation_and_thorough_interfaces_for_testing__For_more_details_about_server_implementation_request_rate_limitation_etc_please_visit__Hyphenate_Server_Integration_httpdocs_hyphenate_iov1_0docsserver_overview___Noteorg_ID_is_the_unique_ID_of_the_organization_created_when_you_first_registered__Hyphenate_console_httpsconsole_hyphenate_io__________________________app_name_is_the_unique_app_ID_created_when_you_new_application_in__Hyphenate_console_httpsconsole_hyphenate_io____________Authorization_token_is_required_for_most_API_requests_as_part_of_requesting_header_in_the_format_Bearer_token__You_can_obtain_the_token_via__org_nameapp_nametoken_httpsdocs_hyphenate_iodocsserver_overviewsection_request_authentication_token_____________________________________________",
+  "license": "Apache-2.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "dependencies": {
+    "superagent": "1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}
