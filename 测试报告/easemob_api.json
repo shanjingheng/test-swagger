@@ -3888,10 +3888,6 @@
         }
     },
     "definitions": {
-        "cat": {
-            "type": "string",
-            "description": "cat is cute"
-        },
 		"RegisterUsers": {
 			"type": "array", 
 			"items": {

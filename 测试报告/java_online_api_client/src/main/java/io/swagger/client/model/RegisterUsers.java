@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * RegisterUsers
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-03T17:22:30.082+08:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-03T17:40:42.166+08:00")
 public class RegisterUsers extends ArrayList<User>  {
 
   @Override
