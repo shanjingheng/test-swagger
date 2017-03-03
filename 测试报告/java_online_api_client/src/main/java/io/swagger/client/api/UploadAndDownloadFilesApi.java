@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -143,10 +143,12 @@ public class UploadAndDownloadFilesApi {
      * @param authorization Bearer ${token} (required)
      * @param file  (required)
      * @param restrictAccess \&quot;restrict-access\&quot; determines whether later the file require \&quot;share-secret\&quot; for access or allow public access.  (optional, default to )
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatfilesPost(String orgName, String appName, String authorization, File file, Boolean restrictAccess) throws ApiException {
-        orgNameAppNameChatfilesPostWithHttpInfo(orgName, appName, authorization, file, restrictAccess);
+    public String orgNameAppNameChatfilesPost(String orgName, String appName, String authorization, File file, Boolean restrictAccess) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatfilesPostWithHttpInfo(orgName, appName, authorization, file, restrictAccess);
+        return resp.getData();
     }
 
     /**
@@ -157,12 +159,13 @@ public class UploadAndDownloadFilesApi {
      * @param authorization Bearer ${token} (required)
      * @param file  (required)
      * @param restrictAccess \&quot;restrict-access\&quot; determines whether later the file require \&quot;share-secret\&quot; for access or allow public access.  (optional, default to )
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatfilesPostWithHttpInfo(String orgName, String appName, String authorization, File file, Boolean restrictAccess) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatfilesPostWithHttpInfo(String orgName, String appName, String authorization, File file, Boolean restrictAccess) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatfilesPostCall(orgName, appName, authorization, file, restrictAccess, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -177,7 +180,7 @@ public class UploadAndDownloadFilesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatfilesPostAsync(String orgName, String appName, String authorization, File file, Boolean restrictAccess, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatfilesPostAsync(String orgName, String appName, String authorization, File file, Boolean restrictAccess, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -199,7 +202,8 @@ public class UploadAndDownloadFilesApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatfilesPostCall(orgName, appName, authorization, file, restrictAccess, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatfilesUuidGet */
@@ -292,10 +296,12 @@ public class UploadAndDownloadFilesApi {
      * @param uuid uuid, the file identifier, from previous successful uploading reponse (required)
      * @param shareSecret share-secret from previous successful uploading response (required)
      * @param thumbnail The request will return thumbnail if the tag of “thumbnail: true” is explicitly put in the header (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatfilesUuidGet(String orgName, String appName, String authorization, String uuid, String shareSecret, Boolean thumbnail) throws ApiException {
-        orgNameAppNameChatfilesUuidGetWithHttpInfo(orgName, appName, authorization, uuid, shareSecret, thumbnail);
+    public String orgNameAppNameChatfilesUuidGet(String orgName, String appName, String authorization, String uuid, String shareSecret, Boolean thumbnail) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatfilesUuidGetWithHttpInfo(orgName, appName, authorization, uuid, shareSecret, thumbnail);
+        return resp.getData();
     }
 
     /**
@@ -307,12 +313,13 @@ public class UploadAndDownloadFilesApi {
      * @param uuid uuid, the file identifier, from previous successful uploading reponse (required)
      * @param shareSecret share-secret from previous successful uploading response (required)
      * @param thumbnail The request will return thumbnail if the tag of “thumbnail: true” is explicitly put in the header (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatfilesUuidGetWithHttpInfo(String orgName, String appName, String authorization, String uuid, String shareSecret, Boolean thumbnail) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatfilesUuidGetWithHttpInfo(String orgName, String appName, String authorization, String uuid, String shareSecret, Boolean thumbnail) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatfilesUuidGetCall(orgName, appName, authorization, uuid, shareSecret, thumbnail, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -328,7 +335,7 @@ public class UploadAndDownloadFilesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatfilesUuidGetAsync(String orgName, String appName, String authorization, String uuid, String shareSecret, Boolean thumbnail, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatfilesUuidGetAsync(String orgName, String appName, String authorization, String uuid, String shareSecret, Boolean thumbnail, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -350,7 +357,8 @@ public class UploadAndDownloadFilesApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatfilesUuidGetCall(orgName, appName, authorization, uuid, shareSecret, thumbnail, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

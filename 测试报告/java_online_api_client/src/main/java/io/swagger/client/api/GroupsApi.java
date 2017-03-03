@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -135,10 +135,12 @@ public class GroupsApi {
      * @param orgName Organization ID (required)
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGet(String orgName, String appName, String authorization) throws ApiException {
-        orgNameAppNameChatgroupsGetWithHttpInfo(orgName, appName, authorization);
+    public String orgNameAppNameChatgroupsGet(String orgName, String appName, String authorization) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGetWithHttpInfo(orgName, appName, authorization);
+        return resp.getData();
     }
 
     /**
@@ -147,12 +149,13 @@ public class GroupsApi {
      * @param orgName Organization ID (required)
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGetWithHttpInfo(String orgName, String appName, String authorization) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGetWithHttpInfo(String orgName, String appName, String authorization) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGetCall(orgName, appName, authorization, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -165,7 +168,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGetAsync(String orgName, String appName, String authorization, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGetAsync(String orgName, String appName, String authorization, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -187,7 +190,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGetCall(orgName, appName, authorization, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdBlocksUsersGet */
@@ -264,10 +268,12 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdBlocksUsersGet(String orgName, String appName, String authorization, String groupId) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdBlocksUsersGetWithHttpInfo(orgName, appName, authorization, groupId);
+    public String orgNameAppNameChatgroupsGroupIdBlocksUsersGet(String orgName, String appName, String authorization, String groupId) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdBlocksUsersGetWithHttpInfo(orgName, appName, authorization, groupId);
+        return resp.getData();
     }
 
     /**
@@ -277,12 +283,13 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdBlocksUsersGetWithHttpInfo(String orgName, String appName, String authorization, String groupId) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdBlocksUsersGetWithHttpInfo(String orgName, String appName, String authorization, String groupId) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersGetCall(orgName, appName, authorization, groupId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -296,7 +303,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersGetAsync(String orgName, String appName, String authorization, String groupId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersGetAsync(String orgName, String appName, String authorization, String groupId, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -318,7 +325,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersGetCall(orgName, appName, authorization, groupId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdBlocksUsersPost */
@@ -401,10 +409,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param body Separate usernames by &#39;,&#39; (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdBlocksUsersPost(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdBlocksUsersPostWithHttpInfo(orgName, appName, authorization, groupId, body);
+    public String orgNameAppNameChatgroupsGroupIdBlocksUsersPost(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdBlocksUsersPostWithHttpInfo(orgName, appName, authorization, groupId, body);
+        return resp.getData();
     }
 
     /**
@@ -415,12 +425,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param body Separate usernames by &#39;,&#39; (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdBlocksUsersPostWithHttpInfo(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdBlocksUsersPostWithHttpInfo(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersPostCall(orgName, appName, authorization, groupId, body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -435,7 +446,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersPostAsync(String orgName, String appName, String authorization, String groupId, UserNames body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersPostAsync(String orgName, String appName, String authorization, String groupId, UserNames body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -457,7 +468,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersPostCall(orgName, appName, authorization, groupId, body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete */
@@ -541,10 +553,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, groupId, username);
+    public String orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, groupId, username);
+        return resp.getData();
     }
 
     /**
@@ -555,12 +569,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteCall(orgName, appName, authorization, groupId, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -575,7 +590,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -597,7 +612,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDeleteCall(orgName, appName, authorization, groupId, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost */
@@ -681,10 +697,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostWithHttpInfo(orgName, appName, authorization, groupId, username);
+    public String orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostWithHttpInfo(orgName, appName, authorization, groupId, username);
+        return resp.getData();
     }
 
     /**
@@ -695,12 +713,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostCall(orgName, appName, authorization, groupId, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -715,7 +734,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -737,7 +756,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePostCall(orgName, appName, authorization, groupId, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete */
@@ -821,10 +841,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param usernames Separate usernames by &#39;,&#39; (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(String orgName, String appName, String authorization, String groupId, String usernames) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteWithHttpInfo(orgName, appName, authorization, groupId, usernames);
+    public String orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(String orgName, String appName, String authorization, String groupId, String usernames) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteWithHttpInfo(orgName, appName, authorization, groupId, usernames);
+        return resp.getData();
     }
 
     /**
@@ -835,12 +857,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param usernames Separate usernames by &#39;,&#39; (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String usernames) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String usernames) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteCall(orgName, appName, authorization, groupId, usernames, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -855,7 +878,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteAsync(String orgName, String appName, String authorization, String groupId, String usernames, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteAsync(String orgName, String appName, String authorization, String groupId, String usernames, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -877,7 +900,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDeleteCall(orgName, appName, authorization, groupId, usernames, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdDelete */
@@ -954,10 +978,12 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdDelete(String orgName, String appName, String authorization, String groupId) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdDeleteWithHttpInfo(orgName, appName, authorization, groupId);
+    public String orgNameAppNameChatgroupsGroupIdDelete(String orgName, String appName, String authorization, String groupId) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdDeleteWithHttpInfo(orgName, appName, authorization, groupId);
+        return resp.getData();
     }
 
     /**
@@ -967,12 +993,13 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdDeleteCall(orgName, appName, authorization, groupId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -986,7 +1013,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdDeleteAsync(String orgName, String appName, String authorization, String groupId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdDeleteAsync(String orgName, String appName, String authorization, String groupId, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1008,7 +1035,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdDeleteCall(orgName, appName, authorization, groupId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdPut */
@@ -1091,10 +1119,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param body  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdPut(String orgName, String appName, String authorization, String groupId, ModifyGroup body) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdPutWithHttpInfo(orgName, appName, authorization, groupId, body);
+    public String orgNameAppNameChatgroupsGroupIdPut(String orgName, String appName, String authorization, String groupId, ModifyGroup body) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdPutWithHttpInfo(orgName, appName, authorization, groupId, body);
+        return resp.getData();
     }
 
     /**
@@ -1105,12 +1135,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param body  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdPutWithHttpInfo(String orgName, String appName, String authorization, String groupId, ModifyGroup body) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdPutWithHttpInfo(String orgName, String appName, String authorization, String groupId, ModifyGroup body) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdPutCall(orgName, appName, authorization, groupId, body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1125,7 +1156,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdPutAsync(String orgName, String appName, String authorization, String groupId, ModifyGroup body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdPutAsync(String orgName, String appName, String authorization, String groupId, ModifyGroup body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1147,7 +1178,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdPutCall(orgName, appName, authorization, groupId, body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdUsersGet */
@@ -1224,10 +1256,12 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdUsersGet(String orgName, String appName, String authorization, String groupId) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdUsersGetWithHttpInfo(orgName, appName, authorization, groupId);
+    public String orgNameAppNameChatgroupsGroupIdUsersGet(String orgName, String appName, String authorization, String groupId) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdUsersGetWithHttpInfo(orgName, appName, authorization, groupId);
+        return resp.getData();
     }
 
     /**
@@ -1237,12 +1271,13 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdUsersGetWithHttpInfo(String orgName, String appName, String authorization, String groupId) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdUsersGetWithHttpInfo(String orgName, String appName, String authorization, String groupId) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersGetCall(orgName, appName, authorization, groupId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1256,7 +1291,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersGetAsync(String orgName, String appName, String authorization, String groupId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersGetAsync(String orgName, String appName, String authorization, String groupId, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1278,7 +1313,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersGetCall(orgName, appName, authorization, groupId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdUsersMembersDelete */
@@ -1362,10 +1398,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token (required)
      * @param groupId  (required)
      * @param members Use &#39;,&#39; to separate usernames (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdUsersMembersDelete(String orgName, String appName, String authorization, String groupId, String members) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdUsersMembersDeleteWithHttpInfo(orgName, appName, authorization, groupId, members);
+    public String orgNameAppNameChatgroupsGroupIdUsersMembersDelete(String orgName, String appName, String authorization, String groupId, String members) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdUsersMembersDeleteWithHttpInfo(orgName, appName, authorization, groupId, members);
+        return resp.getData();
     }
 
     /**
@@ -1376,12 +1414,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token (required)
      * @param groupId  (required)
      * @param members Use &#39;,&#39; to separate usernames (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdUsersMembersDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String members) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdUsersMembersDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String members) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersMembersDeleteCall(orgName, appName, authorization, groupId, members, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1396,7 +1435,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersMembersDeleteAsync(String orgName, String appName, String authorization, String groupId, String members, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersMembersDeleteAsync(String orgName, String appName, String authorization, String groupId, String members, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1418,7 +1457,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersMembersDeleteCall(orgName, appName, authorization, groupId, members, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdUsersPost */
@@ -1501,10 +1541,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param body Separate usernames by &#39;,&#39; (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdUsersPost(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdUsersPostWithHttpInfo(orgName, appName, authorization, groupId, body);
+    public String orgNameAppNameChatgroupsGroupIdUsersPost(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdUsersPostWithHttpInfo(orgName, appName, authorization, groupId, body);
+        return resp.getData();
     }
 
     /**
@@ -1515,12 +1557,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param body Separate usernames by &#39;,&#39; (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdUsersPostWithHttpInfo(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdUsersPostWithHttpInfo(String orgName, String appName, String authorization, String groupId, UserNames body) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersPostCall(orgName, appName, authorization, groupId, body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1535,7 +1578,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersPostAsync(String orgName, String appName, String authorization, String groupId, UserNames body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersPostAsync(String orgName, String appName, String authorization, String groupId, UserNames body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1557,7 +1600,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersPostCall(orgName, appName, authorization, groupId, body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdUsersUsernameDelete */
@@ -1641,10 +1685,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, groupId, username);
+    public String orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, groupId, username);
+        return resp.getData();
     }
 
     /**
@@ -1655,12 +1701,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteCall(orgName, appName, authorization, groupId, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1675,7 +1722,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1697,7 +1744,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersUsernameDeleteCall(orgName, appName, authorization, groupId, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdUsersUsernamePost */
@@ -1781,10 +1829,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdUsersUsernamePost(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdUsersUsernamePostWithHttpInfo(orgName, appName, authorization, groupId, username);
+    public String orgNameAppNameChatgroupsGroupIdUsersUsernamePost(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdUsersUsernamePostWithHttpInfo(orgName, appName, authorization, groupId, username);
+        return resp.getData();
     }
 
     /**
@@ -1795,12 +1845,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupId  (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdUsersUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdUsersUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String groupId, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersUsernamePostCall(orgName, appName, authorization, groupId, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1815,7 +1866,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersUsernamePostAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdUsersUsernamePostAsync(String orgName, String appName, String authorization, String groupId, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1837,7 +1888,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdUsersUsernamePostCall(orgName, appName, authorization, groupId, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupIdsGet */
@@ -1914,10 +1966,12 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupIds Separate group ID by &#39;,&#39;. e.g. {group_id1},{group_id2} (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupIdsGet(String orgName, String appName, String authorization, String groupIds) throws ApiException {
-        orgNameAppNameChatgroupsGroupIdsGetWithHttpInfo(orgName, appName, authorization, groupIds);
+    public String orgNameAppNameChatgroupsGroupIdsGet(String orgName, String appName, String authorization, String groupIds) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupIdsGetWithHttpInfo(orgName, appName, authorization, groupIds);
+        return resp.getData();
     }
 
     /**
@@ -1927,12 +1981,13 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param groupIds Separate group ID by &#39;,&#39;. e.g. {group_id1},{group_id2} (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupIdsGetWithHttpInfo(String orgName, String appName, String authorization, String groupIds) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupIdsGetWithHttpInfo(String orgName, String appName, String authorization, String groupIds) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdsGetCall(orgName, appName, authorization, groupIds, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1946,7 +2001,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdsGetAsync(String orgName, String appName, String authorization, String groupIds, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupIdsGetAsync(String orgName, String appName, String authorization, String groupIds, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1968,7 +2023,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupIdsGetCall(orgName, appName, authorization, groupIds, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsGroupidPut */
@@ -2051,10 +2107,12 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupid  (required)
      * @param body Use the key \&quot;newowner\&quot; and ${new_owner_user} is the username of new group owner (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsGroupidPut(String orgName, String appName, String authorization, String groupid, NewOwner body) throws ApiException {
-        orgNameAppNameChatgroupsGroupidPutWithHttpInfo(orgName, appName, authorization, groupid, body);
+    public String orgNameAppNameChatgroupsGroupidPut(String orgName, String appName, String authorization, String groupid, NewOwner body) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsGroupidPutWithHttpInfo(orgName, appName, authorization, groupid, body);
+        return resp.getData();
     }
 
     /**
@@ -2065,12 +2123,13 @@ public class GroupsApi {
      * @param authorization Bearer ${token} (required)
      * @param groupid  (required)
      * @param body Use the key \&quot;newowner\&quot; and ${new_owner_user} is the username of new group owner (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsGroupidPutWithHttpInfo(String orgName, String appName, String authorization, String groupid, NewOwner body) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsGroupidPutWithHttpInfo(String orgName, String appName, String authorization, String groupid, NewOwner body) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupidPutCall(orgName, appName, authorization, groupid, body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2085,7 +2144,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupidPutAsync(String orgName, String appName, String authorization, String groupid, NewOwner body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsGroupidPutAsync(String orgName, String appName, String authorization, String groupid, NewOwner body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2107,7 +2166,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsGroupidPutCall(orgName, appName, authorization, groupid, body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatgroupsPost */
@@ -2183,10 +2243,12 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param body \&quot;desc\&quot;: group description. Note: Use key \&quot;desc\&quot;.                                                                                                                                           public vs. private: group type.                                                                       maxusers: (Optional Attribute, default is 200). The max number of group members.                                     approval: (Optional Attribute, default is true). Does user need permission to join the group?                          owner: The owner (admin) of the group.                                                          members: (Optional Attribute) Group members. Ignore the attribute if no member to be added. The group owner does not represent as a group member.  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatgroupsPost(String orgName, String appName, String authorization, Group body) throws ApiException {
-        orgNameAppNameChatgroupsPostWithHttpInfo(orgName, appName, authorization, body);
+    public String orgNameAppNameChatgroupsPost(String orgName, String appName, String authorization, Group body) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatgroupsPostWithHttpInfo(orgName, appName, authorization, body);
+        return resp.getData();
     }
 
     /**
@@ -2196,12 +2258,13 @@ public class GroupsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param body \&quot;desc\&quot;: group description. Note: Use key \&quot;desc\&quot;.                                                                                                                                           public vs. private: group type.                                                                       maxusers: (Optional Attribute, default is 200). The max number of group members.                                     approval: (Optional Attribute, default is true). Does user need permission to join the group?                          owner: The owner (admin) of the group.                                                          members: (Optional Attribute) Group members. Ignore the attribute if no member to be added. The group owner does not represent as a group member.  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatgroupsPostWithHttpInfo(String orgName, String appName, String authorization, Group body) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatgroupsPostWithHttpInfo(String orgName, String appName, String authorization, Group body) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsPostCall(orgName, appName, authorization, body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2215,7 +2278,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatgroupsPostAsync(String orgName, String appName, String authorization, Group body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatgroupsPostAsync(String orgName, String appName, String authorization, Group body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2237,7 +2300,8 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatgroupsPostCall(orgName, appName, authorization, body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

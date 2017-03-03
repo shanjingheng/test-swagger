@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -146,10 +146,12 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param limit Total number of user accounts to be deleted (required)
      * @param cursor Cursor value from previous deletion (optional, default to )
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersDelete(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
-        orgNameAppNameUsersDeleteWithHttpInfo(orgName, appName, authorization, limit, cursor);
+    public String orgNameAppNameUsersDelete(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersDeleteWithHttpInfo(orgName, appName, authorization, limit, cursor);
+        return resp.getData();
     }
 
     /**
@@ -160,12 +162,13 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param limit Total number of user accounts to be deleted (required)
      * @param cursor Cursor value from previous deletion (optional, default to )
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersDeleteWithHttpInfo(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersDeleteWithHttpInfo(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersDeleteCall(orgName, appName, authorization, limit, cursor, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -180,7 +183,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersDeleteAsync(String orgName, String appName, String authorization, String limit, String cursor, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersDeleteAsync(String orgName, String appName, String authorization, String limit, String cursor, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -202,7 +205,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersDeleteCall(orgName, appName, authorization, limit, cursor, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersGet */
@@ -278,11 +282,11 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param limit Get specified number of user by setting the batch limit with parameter \&quot;limit\&quot;. Otherwise the API returns the 10 most recent created users by default.  (optional, default to 3)
      * @param cursor Pagination: If the query results more objects than value of limit, then the response will carry an extra attribute “cursor”, the value points to the next page. There is No cursor on the last page or if the returning objects is less than batch limit value. (optional, default to LTgzNDAxMjM3OTpreS0yeXBSSkVlYWZZODl3bXppMTFn")
-     * @return Object
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Object orgNameAppNameUsersGet(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
-        ApiResponse<Object> resp = orgNameAppNameUsersGetWithHttpInfo(orgName, appName, authorization, limit, cursor);
+    public String orgNameAppNameUsersGet(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersGetWithHttpInfo(orgName, appName, authorization, limit, cursor);
         return resp.getData();
     }
 
@@ -294,12 +298,12 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param limit Get specified number of user by setting the batch limit with parameter \&quot;limit\&quot;. Otherwise the API returns the 10 most recent created users by default.  (optional, default to 3)
      * @param cursor Pagination: If the query results more objects than value of limit, then the response will carry an extra attribute “cursor”, the value points to the next page. There is No cursor on the last page or if the returning objects is less than batch limit value. (optional, default to LTgzNDAxMjM3OTpreS0yeXBSSkVlYWZZODl3bXppMTFn")
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Object> orgNameAppNameUsersGetWithHttpInfo(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersGetWithHttpInfo(String orgName, String appName, String authorization, String limit, String cursor) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersGetCall(orgName, appName, authorization, limit, cursor, null, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -315,7 +319,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersGetAsync(String orgName, String appName, String authorization, String limit, String cursor, final ApiCallback<Object> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersGetAsync(String orgName, String appName, String authorization, String limit, String cursor, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -337,7 +341,7 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersGetCall(orgName, appName, authorization, limit, cursor, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -422,10 +426,12 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername  (required)
      * @param blockedUsername  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(String orgName, String appName, String authorization, String ownerUsername, String blockedUsername) throws ApiException {
-        orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteWithHttpInfo(orgName, appName, authorization, ownerUsername, blockedUsername);
+    public String orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(String orgName, String appName, String authorization, String ownerUsername, String blockedUsername) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteWithHttpInfo(orgName, appName, authorization, ownerUsername, blockedUsername);
+        return resp.getData();
     }
 
     /**
@@ -436,12 +442,13 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername  (required)
      * @param blockedUsername  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername, String blockedUsername) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername, String blockedUsername) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteCall(orgName, appName, authorization, ownerUsername, blockedUsername, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -456,7 +463,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteAsync(String orgName, String appName, String authorization, String ownerUsername, String blockedUsername, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteAsync(String orgName, String appName, String authorization, String ownerUsername, String blockedUsername, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -478,7 +485,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDeleteCall(orgName, appName, authorization, ownerUsername, blockedUsername, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersOwnerUsernameBlocksUsersGet */
@@ -555,10 +563,12 @@ public class UsersApi {
      * @param appName Application name  (required)
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername The user who is requesting blacklist (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersOwnerUsernameBlocksUsersGet(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
-        orgNameAppNameUsersOwnerUsernameBlocksUsersGetWithHttpInfo(orgName, appName, authorization, ownerUsername);
+    public String orgNameAppNameUsersOwnerUsernameBlocksUsersGet(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersOwnerUsernameBlocksUsersGetWithHttpInfo(orgName, appName, authorization, ownerUsername);
+        return resp.getData();
     }
 
     /**
@@ -568,12 +578,13 @@ public class UsersApi {
      * @param appName Application name  (required)
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername The user who is requesting blacklist (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersOwnerUsernameBlocksUsersGetWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersOwnerUsernameBlocksUsersGetWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameBlocksUsersGetCall(orgName, appName, authorization, ownerUsername, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -587,7 +598,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameBlocksUsersGetAsync(String orgName, String appName, String authorization, String ownerUsername, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameBlocksUsersGetAsync(String orgName, String appName, String authorization, String ownerUsername, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -609,7 +620,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameBlocksUsersGetCall(orgName, appName, authorization, ownerUsername, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersOwnerUsernameBlocksUsersPost */
@@ -692,10 +704,12 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername The user who initiated the blocking (required)
      * @param usernames Users to be blocked. Use &#39;,&#39; to separate the usernames (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersOwnerUsernameBlocksUsersPost(String orgName, String appName, String authorization, String ownerUsername, UserNames usernames) throws ApiException {
-        orgNameAppNameUsersOwnerUsernameBlocksUsersPostWithHttpInfo(orgName, appName, authorization, ownerUsername, usernames);
+    public String orgNameAppNameUsersOwnerUsernameBlocksUsersPost(String orgName, String appName, String authorization, String ownerUsername, UserNames usernames) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersOwnerUsernameBlocksUsersPostWithHttpInfo(orgName, appName, authorization, ownerUsername, usernames);
+        return resp.getData();
     }
 
     /**
@@ -706,12 +720,13 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername The user who initiated the blocking (required)
      * @param usernames Users to be blocked. Use &#39;,&#39; to separate the usernames (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersOwnerUsernameBlocksUsersPostWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername, UserNames usernames) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersOwnerUsernameBlocksUsersPostWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername, UserNames usernames) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameBlocksUsersPostCall(orgName, appName, authorization, ownerUsername, usernames, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -726,7 +741,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameBlocksUsersPostAsync(String orgName, String appName, String authorization, String ownerUsername, UserNames usernames, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameBlocksUsersPostAsync(String orgName, String appName, String authorization, String ownerUsername, UserNames usernames, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -748,7 +763,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameBlocksUsersPostCall(orgName, appName, authorization, ownerUsername, usernames, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete */
@@ -832,10 +848,12 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername user (required)
      * @param friendUsername contact to be removed (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(String orgName, String appName_, String authorization, String ownerUsername, String friendUsername) throws ApiException {
-        orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteWithHttpInfo(orgName, appName_, authorization, ownerUsername, friendUsername);
+    public String orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(String orgName, String appName_, String authorization, String ownerUsername, String friendUsername) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteWithHttpInfo(orgName, appName_, authorization, ownerUsername, friendUsername);
+        return resp.getData();
     }
 
     /**
@@ -846,12 +864,13 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername user (required)
      * @param friendUsername contact to be removed (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteWithHttpInfo(String orgName, String appName_, String authorization, String ownerUsername, String friendUsername) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteWithHttpInfo(String orgName, String appName_, String authorization, String ownerUsername, String friendUsername) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteCall(orgName, appName_, authorization, ownerUsername, friendUsername, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -866,7 +885,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteAsync(String orgName, String appName_, String authorization, String ownerUsername, String friendUsername, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteAsync(String orgName, String appName_, String authorization, String ownerUsername, String friendUsername, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -888,7 +907,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDeleteCall(orgName, appName_, authorization, ownerUsername, friendUsername, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost */
@@ -972,10 +992,12 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername user (required)
      * @param friendUsername contact to be added (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(String orgName, String appName, String authorization, String ownerUsername, String friendUsername) throws ApiException {
-        orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostWithHttpInfo(orgName, appName, authorization, ownerUsername, friendUsername);
+    public String orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(String orgName, String appName, String authorization, String ownerUsername, String friendUsername) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostWithHttpInfo(orgName, appName, authorization, ownerUsername, friendUsername);
+        return resp.getData();
     }
 
     /**
@@ -986,12 +1008,13 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername user (required)
      * @param friendUsername contact to be added (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername, String friendUsername) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername, String friendUsername) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostCall(orgName, appName, authorization, ownerUsername, friendUsername, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1006,7 +1029,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostAsync(String orgName, String appName, String authorization, String ownerUsername, String friendUsername, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostAsync(String orgName, String appName, String authorization, String ownerUsername, String friendUsername, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1028,7 +1051,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePostCall(orgName, appName, authorization, ownerUsername, friendUsername, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersOwnerUsernameContactsUsersGet */
@@ -1105,10 +1129,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername The user who is requesting contact list (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersOwnerUsernameContactsUsersGet(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
-        orgNameAppNameUsersOwnerUsernameContactsUsersGetWithHttpInfo(orgName, appName, authorization, ownerUsername);
+    public String orgNameAppNameUsersOwnerUsernameContactsUsersGet(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersOwnerUsernameContactsUsersGetWithHttpInfo(orgName, appName, authorization, ownerUsername);
+        return resp.getData();
     }
 
     /**
@@ -1118,12 +1144,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername The user who is requesting contact list (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersOwnerUsernameContactsUsersGetWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersOwnerUsernameContactsUsersGetWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameContactsUsersGetCall(orgName, appName, authorization, ownerUsername, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1137,7 +1164,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameContactsUsersGetAsync(String orgName, String appName, String authorization, String ownerUsername, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameContactsUsersGetAsync(String orgName, String appName, String authorization, String ownerUsername, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1159,7 +1186,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameContactsUsersGetCall(orgName, appName, authorization, ownerUsername, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet */
@@ -1236,10 +1264,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
-        orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetWithHttpInfo(orgName, appName, authorization, ownerUsername);
+    public String orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetWithHttpInfo(orgName, appName, authorization, ownerUsername);
+        return resp.getData();
     }
 
     /**
@@ -1249,12 +1279,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param ownerUsername  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetWithHttpInfo(String orgName, String appName, String authorization, String ownerUsername) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetCall(orgName, appName, authorization, ownerUsername, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1268,7 +1299,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetAsync(String orgName, String appName, String authorization, String ownerUsername, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetAsync(String orgName, String appName, String authorization, String ownerUsername, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1290,7 +1321,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersOwnerUsernameOfflineMsgCountGetCall(orgName, appName, authorization, ownerUsername, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersPost */
@@ -1361,10 +1393,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param body To create multiple users at once: [    {        \&quot;username\&quot;: \&quot;user1\&quot;,        \&quot;password\&quot;: \&quot;123456\&quot;    },    {        \&quot;username\&quot;: \&quot;user2\&quot;,        \&quot;password\&quot;: \&quot;123456\&quot;    }] (required)
      * @param authorization Bearer ${token} (optional, default to Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersPost(String orgName, String appName, RegisterUsers body, String authorization) throws ApiException {
-        orgNameAppNameUsersPostWithHttpInfo(orgName, appName, body, authorization);
+    public String orgNameAppNameUsersPost(String orgName, String appName, RegisterUsers body, String authorization) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersPostWithHttpInfo(orgName, appName, body, authorization);
+        return resp.getData();
     }
 
     /**
@@ -1374,12 +1408,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param body To create multiple users at once: [    {        \&quot;username\&quot;: \&quot;user1\&quot;,        \&quot;password\&quot;: \&quot;123456\&quot;    },    {        \&quot;username\&quot;: \&quot;user2\&quot;,        \&quot;password\&quot;: \&quot;123456\&quot;    }] (required)
      * @param authorization Bearer ${token} (optional, default to Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersPostWithHttpInfo(String orgName, String appName, RegisterUsers body, String authorization) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersPostWithHttpInfo(String orgName, String appName, RegisterUsers body, String authorization) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersPostCall(orgName, appName, body, authorization, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1393,7 +1428,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersPostAsync(String orgName, String appName, RegisterUsers body, String authorization, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersPostAsync(String orgName, String appName, RegisterUsers body, String authorization, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1415,7 +1450,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersPostCall(orgName, appName, body, authorization, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameActivatePost */
@@ -1492,10 +1528,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameActivatePost(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameActivatePostWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameActivatePost(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameActivatePostWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -1505,12 +1543,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameActivatePostWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameActivatePostWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameActivatePostCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1524,7 +1563,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameActivatePostAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameActivatePostAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1546,7 +1585,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameActivatePostCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameDeactivatePost */
@@ -1623,10 +1663,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameDeactivatePost(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameDeactivatePostWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameDeactivatePost(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameDeactivatePostWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -1636,12 +1678,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameDeactivatePostWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameDeactivatePostWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameDeactivatePostCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1655,7 +1698,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameDeactivatePostAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameDeactivatePostAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1677,7 +1720,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameDeactivatePostCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameDelete */
@@ -1754,10 +1798,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username user to be deleted (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameDelete(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameDelete(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -1767,12 +1813,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username user to be deleted (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameDeleteCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1786,7 +1833,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1808,7 +1855,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameDeleteCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameDisconnectGet */
@@ -1885,10 +1933,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameDisconnectGet(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameDisconnectGetWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameDisconnectGet(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameDisconnectGetWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -1898,12 +1948,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameDisconnectGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameDisconnectGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameDisconnectGetCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1917,7 +1968,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameDisconnectGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameDisconnectGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1939,7 +1990,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameDisconnectGetCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameGet */
@@ -2016,10 +2068,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameGet(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameGetWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameGet(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameGetWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -2029,12 +2083,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameGetCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2048,7 +2103,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2070,7 +2125,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameGetCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameJoinedChatgroupsGet */
@@ -2147,10 +2203,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameJoinedChatgroupsGet(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameJoinedChatgroupsGetWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameJoinedChatgroupsGet(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameJoinedChatgroupsGetWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -2160,12 +2218,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameJoinedChatgroupsGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameJoinedChatgroupsGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameJoinedChatgroupsGetCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2179,7 +2238,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameJoinedChatgroupsGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameJoinedChatgroupsGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2201,7 +2260,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameJoinedChatgroupsGetCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameJoinedChatroomsGet */
@@ -2278,10 +2338,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameJoinedChatroomsGet(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameJoinedChatroomsGetWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameJoinedChatroomsGet(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameJoinedChatroomsGetWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -2291,12 +2353,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameJoinedChatroomsGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameJoinedChatroomsGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameJoinedChatroomsGetCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2310,7 +2373,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameJoinedChatroomsGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameJoinedChatroomsGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2332,7 +2395,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameJoinedChatroomsGetCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet */
@@ -2416,10 +2480,12 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
      * @param msgId Message ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(String orgName, String appName, String authorization, String username, String msgId) throws ApiException {
-        orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetWithHttpInfo(orgName, appName, authorization, username, msgId);
+    public String orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(String orgName, String appName, String authorization, String username, String msgId) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetWithHttpInfo(orgName, appName, authorization, username, msgId);
+        return resp.getData();
     }
 
     /**
@@ -2430,12 +2496,13 @@ public class UsersApi {
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
      * @param msgId Message ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetWithHttpInfo(String orgName, String appName, String authorization, String username, String msgId) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetWithHttpInfo(String orgName, String appName, String authorization, String username, String msgId) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetCall(orgName, appName, authorization, username, msgId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2450,7 +2517,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetAsync(String orgName, String appName, String authorization, String username, String msgId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetAsync(String orgName, String appName, String authorization, String username, String msgId, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2472,7 +2539,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGetCall(orgName, appName, authorization, username, msgId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernamePasswordPut */
@@ -2550,10 +2618,12 @@ public class UsersApi {
      * @param username  (required)
      * @param body Set a new password by using key \&quot;newpassword\&quot; (required)
      * @param authorization Bearer ${token} (optional, default to Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernamePasswordPut(String orgName, String appName, String username, NewPassword body, String authorization) throws ApiException {
-        orgNameAppNameUsersUsernamePasswordPutWithHttpInfo(orgName, appName, username, body, authorization);
+    public String orgNameAppNameUsersUsernamePasswordPut(String orgName, String appName, String username, NewPassword body, String authorization) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernamePasswordPutWithHttpInfo(orgName, appName, username, body, authorization);
+        return resp.getData();
     }
 
     /**
@@ -2564,12 +2634,13 @@ public class UsersApi {
      * @param username  (required)
      * @param body Set a new password by using key \&quot;newpassword\&quot; (required)
      * @param authorization Bearer ${token} (optional, default to Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernamePasswordPutWithHttpInfo(String orgName, String appName, String username, NewPassword body, String authorization) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernamePasswordPutWithHttpInfo(String orgName, String appName, String username, NewPassword body, String authorization) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernamePasswordPutCall(orgName, appName, username, body, authorization, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2584,7 +2655,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernamePasswordPutAsync(String orgName, String appName, String username, NewPassword body, String authorization, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernamePasswordPutAsync(String orgName, String appName, String username, NewPassword body, String authorization, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2606,7 +2677,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernamePasswordPutCall(orgName, appName, username, body, authorization, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernamePut */
@@ -2684,10 +2756,12 @@ public class UsersApi {
      * @param username  (required)
      * @param body update APNs display name by key \&quot;nickname\&quot; (required)
      * @param authorization Bearer ${token} (optional, default to Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernamePut(String orgName, String appName, String username, Nickname body, String authorization) throws ApiException {
-        orgNameAppNameUsersUsernamePutWithHttpInfo(orgName, appName, username, body, authorization);
+    public String orgNameAppNameUsersUsernamePut(String orgName, String appName, String username, Nickname body, String authorization) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernamePutWithHttpInfo(orgName, appName, username, body, authorization);
+        return resp.getData();
     }
 
     /**
@@ -2698,12 +2772,13 @@ public class UsersApi {
      * @param username  (required)
      * @param body update APNs display name by key \&quot;nickname\&quot; (required)
      * @param authorization Bearer ${token} (optional, default to Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernamePutWithHttpInfo(String orgName, String appName, String username, Nickname body, String authorization) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernamePutWithHttpInfo(String orgName, String appName, String username, Nickname body, String authorization) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernamePutCall(orgName, appName, username, body, authorization, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2718,7 +2793,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernamePutAsync(String orgName, String appName, String username, Nickname body, String authorization, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernamePutAsync(String orgName, String appName, String username, Nickname body, String authorization, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2740,7 +2815,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernamePutCall(orgName, appName, username, body, authorization, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameUsersUsernameStatusGet */
@@ -2817,10 +2893,12 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameUsersUsernameStatusGet(String orgName, String appName, String authorization, String username) throws ApiException {
-        orgNameAppNameUsersUsernameStatusGetWithHttpInfo(orgName, appName, authorization, username);
+    public String orgNameAppNameUsersUsernameStatusGet(String orgName, String appName, String authorization, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameUsersUsernameStatusGetWithHttpInfo(orgName, appName, authorization, username);
+        return resp.getData();
     }
 
     /**
@@ -2830,12 +2908,13 @@ public class UsersApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameUsersUsernameStatusGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameUsersUsernameStatusGetWithHttpInfo(String orgName, String appName, String authorization, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameStatusGetCall(orgName, appName, authorization, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2849,7 +2928,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameStatusGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameUsersUsernameStatusGetAsync(String orgName, String appName, String authorization, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2871,7 +2950,8 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameUsersUsernameStatusGetCall(orgName, appName, authorization, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

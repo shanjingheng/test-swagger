@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="orgNameAppNameChatroomsChatroomIdDelete"></a>
 # **orgNameAppNameChatroomsChatroomIdDelete**
-> orgNameAppNameChatroomsChatroomIdDelete(orgName, appName, authorization, chatroomId)
+> String orgNameAppNameChatroomsChatroomIdDelete(orgName, appName, authorization, chatroomId)
 
 Delete a Chat Room
 
@@ -36,7 +36,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String chatroomId = "chatroomId_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatroomsChatroomIdDelete(orgName, appName, authorization, chatroomId);
+    String result = apiInstance.orgNameAppNameChatroomsChatroomIdDelete(orgName, appName, authorization, chatroomId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsChatroomIdDelete");
     e.printStackTrace();
@@ -54,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -67,7 +68,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsChatroomIdGet"></a>
 # **orgNameAppNameChatroomsChatroomIdGet**
-> orgNameAppNameChatroomsChatroomIdGet(orgName, appName, authorization, chatroomId)
+> String orgNameAppNameChatroomsChatroomIdGet(orgName, appName, authorization, chatroomId)
 
 Get Chat Room Details
 
@@ -86,7 +87,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String chatroomId = "chatroomId_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatroomsChatroomIdGet(orgName, appName, authorization, chatroomId);
+    String result = apiInstance.orgNameAppNameChatroomsChatroomIdGet(orgName, appName, authorization, chatroomId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsChatroomIdGet");
     e.printStackTrace();
@@ -104,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -117,7 +119,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsChatroomIdPut"></a>
 # **orgNameAppNameChatroomsChatroomIdPut**
-> orgNameAppNameChatroomsChatroomIdPut(orgName, appName, authorization, chatroomId, body)
+> String orgNameAppNameChatroomsChatroomIdPut(orgName, appName, authorization, chatroomId, body)
 
 Update Chat Room Details
 
@@ -137,7 +139,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String chatroomId = "chatroomId_example"; // String | 
 ModifyChatroom body = new ModifyChatroom(); // ModifyChatroom | 
 try {
-    apiInstance.orgNameAppNameChatroomsChatroomIdPut(orgName, appName, authorization, chatroomId, body);
+    String result = apiInstance.orgNameAppNameChatroomsChatroomIdPut(orgName, appName, authorization, chatroomId, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsChatroomIdPut");
     e.printStackTrace();
@@ -156,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -169,7 +172,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsChatroomIdUsersPost"></a>
 # **orgNameAppNameChatroomsChatroomIdUsersPost**
-> orgNameAppNameChatroomsChatroomIdUsersPost(orgName, appName, authorization, chatroomId, content)
+> String orgNameAppNameChatroomsChatroomIdUsersPost(orgName, appName, authorization, chatroomId, content)
 
 Add Chat Room Members in Batch
 
@@ -189,7 +192,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String chatroomId = "chatroomId_example"; // String | 
 UserNames content = new UserNames(); // UserNames | 
 try {
-    apiInstance.orgNameAppNameChatroomsChatroomIdUsersPost(orgName, appName, authorization, chatroomId, content);
+    String result = apiInstance.orgNameAppNameChatroomsChatroomIdUsersPost(orgName, appName, authorization, chatroomId, content);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsChatroomIdUsersPost");
     e.printStackTrace();
@@ -208,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -221,7 +225,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsChatroomIdUsersUsernameDelete"></a>
 # **orgNameAppNameChatroomsChatroomIdUsersUsernameDelete**
-> orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(orgName, appName, authorization, chatroomId, username)
+> String orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(orgName, appName, authorization, chatroomId, username)
 
 Remove a Chat Room Member
 
@@ -241,7 +245,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String chatroomId = "chatroomId_example"; // String | 
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(orgName, appName, authorization, chatroomId, username);
+    String result = apiInstance.orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(orgName, appName, authorization, chatroomId, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsChatroomIdUsersUsernameDelete");
     e.printStackTrace();
@@ -260,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -273,7 +278,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsChatroomIdUsersUsernamePost"></a>
 # **orgNameAppNameChatroomsChatroomIdUsersUsernamePost**
-> orgNameAppNameChatroomsChatroomIdUsersUsernamePost(orgName, appName, authorization, chatroomId, username)
+> String orgNameAppNameChatroomsChatroomIdUsersUsernamePost(orgName, appName, authorization, chatroomId, username)
 
 Add a Chat Room Member
 
@@ -293,7 +298,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String chatroomId = "chatroomId_example"; // String | 
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatroomsChatroomIdUsersUsernamePost(orgName, appName, authorization, chatroomId, username);
+    String result = apiInstance.orgNameAppNameChatroomsChatroomIdUsersUsernamePost(orgName, appName, authorization, chatroomId, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsChatroomIdUsersUsernamePost");
     e.printStackTrace();
@@ -312,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -325,7 +331,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete"></a>
 # **orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete**
-> orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(orgName, appName, authorization, chatroomId, usernames)
+> String orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(orgName, appName, authorization, chatroomId, usernames)
 
 Remove Chat Room Members in Batch
 
@@ -345,7 +351,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String chatroomId = "chatroomId_example"; // String | 
 String usernames = "usernames_example"; // String | Separate usernames by ','
 try {
-    apiInstance.orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(orgName, appName, authorization, chatroomId, usernames);
+    String result = apiInstance.orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(orgName, appName, authorization, chatroomId, usernames);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete");
     e.printStackTrace();
@@ -364,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -377,7 +384,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsGet"></a>
 # **orgNameAppNameChatroomsGet**
-> orgNameAppNameChatroomsGet(orgName, appName, authorization)
+> String orgNameAppNameChatroomsGet(orgName, appName, authorization)
 
 Get All the Chat Rooms
 
@@ -395,7 +402,8 @@ String orgName = "orgName_example"; // String | Organization ID
 String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 try {
-    apiInstance.orgNameAppNameChatroomsGet(orgName, appName, authorization);
+    String result = apiInstance.orgNameAppNameChatroomsGet(orgName, appName, authorization);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsGet");
     e.printStackTrace();
@@ -412,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -425,7 +433,7 @@ No authorization required
 
 <a name="orgNameAppNameChatroomsPost"></a>
 # **orgNameAppNameChatroomsPost**
-> orgNameAppNameChatroomsPost(orgName, appName, authorization, body)
+> String orgNameAppNameChatroomsPost(orgName, appName, authorization, body)
 
 Create a Chat Room
 
@@ -444,7 +452,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 Chatroom body = new Chatroom(); // Chatroom | 
 try {
-    apiInstance.orgNameAppNameChatroomsPost(orgName, appName, authorization, body);
+    String result = apiInstance.orgNameAppNameChatroomsPost(orgName, appName, authorization, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatRoomsApi#orgNameAppNameChatroomsPost");
     e.printStackTrace();
@@ -462,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

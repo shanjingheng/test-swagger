@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="orgNameAppNameChatgroupsGet"></a>
 # **orgNameAppNameChatgroupsGet**
-> orgNameAppNameChatgroupsGet(orgName, appName, authorization)
+> String orgNameAppNameChatgroupsGet(orgName, appName, authorization)
 
 Get All the Groups
 
@@ -42,7 +42,8 @@ String orgName = "orgName_example"; // String | Organization ID
 String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 try {
-    apiInstance.orgNameAppNameChatgroupsGet(orgName, appName, authorization);
+    String result = apiInstance.orgNameAppNameChatgroupsGet(orgName, appName, authorization);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGet");
     e.printStackTrace();
@@ -59,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -72,7 +73,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdBlocksUsersGet"></a>
 # **orgNameAppNameChatgroupsGroupIdBlocksUsersGet**
-> orgNameAppNameChatgroupsGroupIdBlocksUsersGet(orgName, appName, authorization, groupId)
+> String orgNameAppNameChatgroupsGroupIdBlocksUsersGet(orgName, appName, authorization, groupId)
 
 Get Group Blocked Users
 
@@ -91,7 +92,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String groupId = "groupId_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersGet(orgName, appName, authorization, groupId);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersGet(orgName, appName, authorization, groupId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdBlocksUsersGet");
     e.printStackTrace();
@@ -109,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -122,7 +124,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdBlocksUsersPost"></a>
 # **orgNameAppNameChatgroupsGroupIdBlocksUsersPost**
-> orgNameAppNameChatgroupsGroupIdBlocksUsersPost(orgName, appName, authorization, groupId, body)
+> String orgNameAppNameChatgroupsGroupIdBlocksUsersPost(orgName, appName, authorization, groupId, body)
 
 Block Group Members in Batch
 
@@ -142,7 +144,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 UserNames body = new UserNames(); // UserNames | Separate usernames by ','
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersPost(orgName, appName, authorization, groupId, body);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersPost(orgName, appName, authorization, groupId, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdBlocksUsersPost");
     e.printStackTrace();
@@ -161,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -174,7 +177,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete"></a>
 # **orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete**
-> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(orgName, appName, authorization, groupId, username)
+> String orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(orgName, appName, authorization, groupId, username)
 
 Unblock a Group Member
 
@@ -194,7 +197,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(orgName, appName, authorization, groupId, username);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(orgName, appName, authorization, groupId, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete");
     e.printStackTrace();
@@ -213,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -226,7 +230,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost"></a>
 # **orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost**
-> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(orgName, appName, authorization, groupId, username)
+> String orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(orgName, appName, authorization, groupId, username)
 
 Block a Group Member
 
@@ -246,7 +250,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(orgName, appName, authorization, groupId, username);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(orgName, appName, authorization, groupId, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost");
     e.printStackTrace();
@@ -265,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -278,7 +283,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete"></a>
 # **orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete**
-> orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(orgName, appName, authorization, groupId, usernames)
+> String orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(orgName, appName, authorization, groupId, usernames)
 
 Unblock Group Members in Batch
 
@@ -298,7 +303,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 String usernames = "usernames_example"; // String | Separate usernames by ','
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(orgName, appName, authorization, groupId, usernames);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(orgName, appName, authorization, groupId, usernames);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete");
     e.printStackTrace();
@@ -317,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -330,7 +336,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdDelete"></a>
 # **orgNameAppNameChatgroupsGroupIdDelete**
-> orgNameAppNameChatgroupsGroupIdDelete(orgName, appName, authorization, groupId)
+> String orgNameAppNameChatgroupsGroupIdDelete(orgName, appName, authorization, groupId)
 
 Delete a Group
 
@@ -349,7 +355,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String groupId = "groupId_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdDelete(orgName, appName, authorization, groupId);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdDelete(orgName, appName, authorization, groupId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdDelete");
     e.printStackTrace();
@@ -367,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -380,7 +387,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdPut"></a>
 # **orgNameAppNameChatgroupsGroupIdPut**
-> orgNameAppNameChatgroupsGroupIdPut(orgName, appName, authorization, groupId, body)
+> String orgNameAppNameChatgroupsGroupIdPut(orgName, appName, authorization, groupId, body)
 
 Update Group Details
 
@@ -400,7 +407,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 ModifyGroup body = new ModifyGroup(); // ModifyGroup | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdPut(orgName, appName, authorization, groupId, body);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdPut(orgName, appName, authorization, groupId, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdPut");
     e.printStackTrace();
@@ -419,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -432,7 +440,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdUsersGet"></a>
 # **orgNameAppNameChatgroupsGroupIdUsersGet**
-> orgNameAppNameChatgroupsGroupIdUsersGet(orgName, appName, authorization, groupId)
+> String orgNameAppNameChatgroupsGroupIdUsersGet(orgName, appName, authorization, groupId)
 
 Get a List of Members of Group
 
@@ -451,7 +459,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String groupId = "groupId_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdUsersGet(orgName, appName, authorization, groupId);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdUsersGet(orgName, appName, authorization, groupId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdUsersGet");
     e.printStackTrace();
@@ -469,7 +478,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -482,7 +491,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdUsersMembersDelete"></a>
 # **orgNameAppNameChatgroupsGroupIdUsersMembersDelete**
-> orgNameAppNameChatgroupsGroupIdUsersMembersDelete(orgName, appName, authorization, groupId, members)
+> String orgNameAppNameChatgroupsGroupIdUsersMembersDelete(orgName, appName, authorization, groupId, members)
 
 Remove multiple Member from the Group
 
@@ -502,7 +511,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 String members = "members_example"; // String | Use ',' to separate usernames
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdUsersMembersDelete(orgName, appName, authorization, groupId, members);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdUsersMembersDelete(orgName, appName, authorization, groupId, members);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdUsersMembersDelete");
     e.printStackTrace();
@@ -521,7 +531,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -534,7 +544,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdUsersPost"></a>
 # **orgNameAppNameChatgroupsGroupIdUsersPost**
-> orgNameAppNameChatgroupsGroupIdUsersPost(orgName, appName, authorization, groupId, body)
+> String orgNameAppNameChatgroupsGroupIdUsersPost(orgName, appName, authorization, groupId, body)
 
 Add Multiple Members to Group
 
@@ -554,7 +564,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 UserNames body = new UserNames(); // UserNames | Separate usernames by ','
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdUsersPost(orgName, appName, authorization, groupId, body);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdUsersPost(orgName, appName, authorization, groupId, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdUsersPost");
     e.printStackTrace();
@@ -573,7 +584,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -586,7 +597,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdUsersUsernameDelete"></a>
 # **orgNameAppNameChatgroupsGroupIdUsersUsernameDelete**
-> orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(orgName, appName, authorization, groupId, username)
+> String orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(orgName, appName, authorization, groupId, username)
 
 Remove a Member from the Group
 
@@ -606,7 +617,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(orgName, appName, authorization, groupId, username);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(orgName, appName, authorization, groupId, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdUsersUsernameDelete");
     e.printStackTrace();
@@ -625,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -638,7 +650,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdUsersUsernamePost"></a>
 # **orgNameAppNameChatgroupsGroupIdUsersUsernamePost**
-> orgNameAppNameChatgroupsGroupIdUsersUsernamePost(orgName, appName, authorization, groupId, username)
+> String orgNameAppNameChatgroupsGroupIdUsersUsernamePost(orgName, appName, authorization, groupId, username)
 
 Add a Member to Group
 
@@ -658,7 +670,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupId = "groupId_example"; // String | 
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdUsersUsernamePost(orgName, appName, authorization, groupId, username);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdUsersUsernamePost(orgName, appName, authorization, groupId, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdUsersUsernamePost");
     e.printStackTrace();
@@ -677,7 +690,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -690,7 +703,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupIdsGet"></a>
 # **orgNameAppNameChatgroupsGroupIdsGet**
-> orgNameAppNameChatgroupsGroupIdsGet(orgName, appName, authorization, groupIds)
+> String orgNameAppNameChatgroupsGroupIdsGet(orgName, appName, authorization, groupIds)
 
 Get Group(s) Details
 
@@ -709,7 +722,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String groupIds = "groupIds_example"; // String | Separate group ID by ','. e.g. {group_id1},{group_id2}
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupIdsGet(orgName, appName, authorization, groupIds);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupIdsGet(orgName, appName, authorization, groupIds);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupIdsGet");
     e.printStackTrace();
@@ -727,7 +741,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -740,7 +754,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsGroupidPut"></a>
 # **orgNameAppNameChatgroupsGroupidPut**
-> orgNameAppNameChatgroupsGroupidPut(orgName, appName, authorization, groupid, body)
+> String orgNameAppNameChatgroupsGroupidPut(orgName, appName, authorization, groupid, body)
 
 Update Group Owner
 
@@ -760,7 +774,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String groupid = "groupid_example"; // String | 
 NewOwner body = new NewOwner(); // NewOwner | Use the key \"newowner\" and ${new_owner_user} is the username of new group owner
 try {
-    apiInstance.orgNameAppNameChatgroupsGroupidPut(orgName, appName, authorization, groupid, body);
+    String result = apiInstance.orgNameAppNameChatgroupsGroupidPut(orgName, appName, authorization, groupid, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsGroupidPut");
     e.printStackTrace();
@@ -779,7 +794,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -792,7 +807,7 @@ No authorization required
 
 <a name="orgNameAppNameChatgroupsPost"></a>
 # **orgNameAppNameChatgroupsPost**
-> orgNameAppNameChatgroupsPost(orgName, appName, authorization, body)
+> String orgNameAppNameChatgroupsPost(orgName, appName, authorization, body)
 
 Create a Group
 
@@ -811,7 +826,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 Group body = new Group(); // Group | \"desc\": group description. Note: Use key \"desc\".                                                                                                                                           public vs. private: group type.                                                                       maxusers: (Optional Attribute, default is 200). The max number of group members.                                     approval: (Optional Attribute, default is true). Does user need permission to join the group?                          owner: The owner (admin) of the group.                                                          members: (Optional Attribute) Group members. Ignore the attribute if no member to be added. The group owner does not represent as a group member. 
 try {
-    apiInstance.orgNameAppNameChatgroupsPost(orgName, appName, authorization, body);
+    String result = apiInstance.orgNameAppNameChatgroupsPost(orgName, appName, authorization, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GroupsApi#orgNameAppNameChatgroupsPost");
     e.printStackTrace();
@@ -829,7 +845,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

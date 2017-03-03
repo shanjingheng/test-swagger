@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 <a name="orgNameAppNameUsersDelete"></a>
 # **orgNameAppNameUsersDelete**
-> orgNameAppNameUsersDelete(orgName, appName, authorization, limit, cursor)
+> String orgNameAppNameUsersDelete(orgName, appName, authorization, limit, cursor)
 
 Delete Users in Batch
 
@@ -49,7 +49,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String limit = "3"; // String | Total number of user accounts to be deleted
 String cursor = ""; // String | Cursor value from previous deletion
 try {
-    apiInstance.orgNameAppNameUsersDelete(orgName, appName, authorization, limit, cursor);
+    String result = apiInstance.orgNameAppNameUsersDelete(orgName, appName, authorization, limit, cursor);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersDelete");
     e.printStackTrace();
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -81,7 +82,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersGet"></a>
 # **orgNameAppNameUsersGet**
-> Object orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor)
+> String orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor)
 
 Get Users in Batch
 
@@ -101,7 +102,7 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String limit = "3"; // String | Get specified number of user by setting the batch limit with parameter \"limit\". Otherwise the API returns the 10 most recent created users by default. 
 String cursor = "LTgzNDAxMjM3OTpreS0yeXBSSkVlYWZZODl3bXppMTFn\""; // String | Pagination: If the query results more objects than value of limit, then the response will carry an extra attribute “cursor”, the value points to the next page. There is No cursor on the last page or if the returning objects is less than batch limit value.
 try {
-    Object result = apiInstance.orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor);
+    String result = apiInstance.orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersGet");
@@ -121,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+**String**
 
 ### Authorization
 
@@ -134,7 +135,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete"></a>
 # **orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete**
-> orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(orgName, appName, authorization, ownerUsername, blockedUsername)
+> String orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(orgName, appName, authorization, ownerUsername, blockedUsername)
 
 Unblock User(s)
 
@@ -154,7 +155,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String ownerUsername = "ownerUsername_example"; // String | 
 String blockedUsername = "blockedUsername_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(orgName, appName, authorization, ownerUsername, blockedUsername);
+    String result = apiInstance.orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(orgName, appName, authorization, ownerUsername, blockedUsername);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete");
     e.printStackTrace();
@@ -173,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -186,7 +188,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersOwnerUsernameBlocksUsersGet"></a>
 # **orgNameAppNameUsersOwnerUsernameBlocksUsersGet**
-> orgNameAppNameUsersOwnerUsernameBlocksUsersGet(orgName, appName, authorization, ownerUsername)
+> String orgNameAppNameUsersOwnerUsernameBlocksUsersGet(orgName, appName, authorization, ownerUsername)
 
 Get a List of Blocked Users
 
@@ -205,7 +207,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String ownerUsername = "ownerUsername_example"; // String | The user who is requesting blacklist
 try {
-    apiInstance.orgNameAppNameUsersOwnerUsernameBlocksUsersGet(orgName, appName, authorization, ownerUsername);
+    String result = apiInstance.orgNameAppNameUsersOwnerUsernameBlocksUsersGet(orgName, appName, authorization, ownerUsername);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersOwnerUsernameBlocksUsersGet");
     e.printStackTrace();
@@ -223,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -236,7 +239,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersOwnerUsernameBlocksUsersPost"></a>
 # **orgNameAppNameUsersOwnerUsernameBlocksUsersPost**
-> orgNameAppNameUsersOwnerUsernameBlocksUsersPost(orgName, appName, authorization, ownerUsername, usernames)
+> String orgNameAppNameUsersOwnerUsernameBlocksUsersPost(orgName, appName, authorization, ownerUsername, usernames)
 
 Block User(s)
 
@@ -256,7 +259,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String ownerUsername = "ownerUsername_example"; // String | The user who initiated the blocking
 UserNames usernames = new UserNames(); // UserNames | Users to be blocked. Use ',' to separate the usernames
 try {
-    apiInstance.orgNameAppNameUsersOwnerUsernameBlocksUsersPost(orgName, appName, authorization, ownerUsername, usernames);
+    String result = apiInstance.orgNameAppNameUsersOwnerUsernameBlocksUsersPost(orgName, appName, authorization, ownerUsername, usernames);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersOwnerUsernameBlocksUsersPost");
     e.printStackTrace();
@@ -275,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -288,7 +292,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete"></a>
 # **orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete**
-> orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(orgName, appName_, authorization, ownerUsername, friendUsername)
+> String orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(orgName, appName_, authorization, ownerUsername, friendUsername)
 
 Remove Contact from User
 
@@ -308,7 +312,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String ownerUsername = "ownerUsername_example"; // String | user
 String friendUsername = "friendUsername_example"; // String | contact to be removed
 try {
-    apiInstance.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(orgName, appName_, authorization, ownerUsername, friendUsername);
+    String result = apiInstance.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(orgName, appName_, authorization, ownerUsername, friendUsername);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete");
     e.printStackTrace();
@@ -327,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -340,7 +345,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost"></a>
 # **orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost**
-> orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(orgName, appName, authorization, ownerUsername, friendUsername)
+> String orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(orgName, appName, authorization, ownerUsername, friendUsername)
 
 Add Contact for User
 
@@ -360,7 +365,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String ownerUsername = "ownerUsername_example"; // String | user
 String friendUsername = "friendUsername_example"; // String | contact to be added
 try {
-    apiInstance.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(orgName, appName, authorization, ownerUsername, friendUsername);
+    String result = apiInstance.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(orgName, appName, authorization, ownerUsername, friendUsername);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost");
     e.printStackTrace();
@@ -379,7 +385,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -392,7 +398,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersOwnerUsernameContactsUsersGet"></a>
 # **orgNameAppNameUsersOwnerUsernameContactsUsersGet**
-> orgNameAppNameUsersOwnerUsernameContactsUsersGet(orgName, appName, authorization, ownerUsername)
+> String orgNameAppNameUsersOwnerUsernameContactsUsersGet(orgName, appName, authorization, ownerUsername)
 
 Get a List of Contacts
 
@@ -411,7 +417,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String ownerUsername = "ownerUsername_example"; // String | The user who is requesting contact list
 try {
-    apiInstance.orgNameAppNameUsersOwnerUsernameContactsUsersGet(orgName, appName, authorization, ownerUsername);
+    String result = apiInstance.orgNameAppNameUsersOwnerUsernameContactsUsersGet(orgName, appName, authorization, ownerUsername);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersOwnerUsernameContactsUsersGet");
     e.printStackTrace();
@@ -429,7 +436,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -442,7 +449,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet"></a>
 # **orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet**
-> orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(orgName, appName, authorization, ownerUsername)
+> String orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(orgName, appName, authorization, ownerUsername)
 
 Get Offline Message Count
 
@@ -461,7 +468,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String ownerUsername = "ownerUsername_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(orgName, appName, authorization, ownerUsername);
+    String result = apiInstance.orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(orgName, appName, authorization, ownerUsername);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet");
     e.printStackTrace();
@@ -479,7 +487,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -492,7 +500,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersPost"></a>
 # **orgNameAppNameUsersPost**
-> orgNameAppNameUsersPost(orgName, appName, body, authorization)
+> String orgNameAppNameUsersPost(orgName, appName, body, authorization)
 
 Create a User
 
@@ -511,7 +519,8 @@ String appName = "appName_example"; // String | Application name
 RegisterUsers body = new RegisterUsers(); // RegisterUsers | To create multiple users at once: [    {        \"username\": \"user1\",        \"password\": \"123456\"    },    {        \"username\": \"user2\",        \"password\": \"123456\"    }]
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 try {
-    apiInstance.orgNameAppNameUsersPost(orgName, appName, body, authorization);
+    String result = apiInstance.orgNameAppNameUsersPost(orgName, appName, body, authorization);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersPost");
     e.printStackTrace();
@@ -529,7 +538,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -542,7 +551,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameActivatePost"></a>
 # **orgNameAppNameUsersUsernameActivatePost**
-> orgNameAppNameUsersUsernameActivatePost(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameActivatePost(orgName, appName, authorization, username)
 
 Activate User Account
 
@@ -561,7 +570,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersUsernameActivatePost(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameActivatePost(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameActivatePost");
     e.printStackTrace();
@@ -579,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -592,7 +602,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameDeactivatePost"></a>
 # **orgNameAppNameUsersUsernameDeactivatePost**
-> orgNameAppNameUsersUsernameDeactivatePost(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameDeactivatePost(orgName, appName, authorization, username)
 
 Deactivate User Account
 
@@ -611,7 +621,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersUsernameDeactivatePost(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameDeactivatePost(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameDeactivatePost");
     e.printStackTrace();
@@ -629,7 +640,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -642,7 +653,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameDelete"></a>
 # **orgNameAppNameUsersUsernameDelete**
-> orgNameAppNameUsersUsernameDelete(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameDelete(orgName, appName, authorization, username)
 
 Delete a User
 
@@ -661,7 +672,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | user to be deleted
 try {
-    apiInstance.orgNameAppNameUsersUsernameDelete(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameDelete(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameDelete");
     e.printStackTrace();
@@ -679,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -692,7 +704,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameDisconnectGet"></a>
 # **orgNameAppNameUsersUsernameDisconnectGet**
-> orgNameAppNameUsersUsernameDisconnectGet(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameDisconnectGet(orgName, appName, authorization, username)
 
 Logout User
 
@@ -711,7 +723,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersUsernameDisconnectGet(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameDisconnectGet(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameDisconnectGet");
     e.printStackTrace();
@@ -729,7 +742,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -742,7 +755,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameGet"></a>
 # **orgNameAppNameUsersUsernameGet**
-> orgNameAppNameUsersUsernameGet(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameGet(orgName, appName, authorization, username)
 
 Get a User
 
@@ -761,7 +774,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersUsernameGet(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameGet(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameGet");
     e.printStackTrace();
@@ -779,7 +793,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -792,7 +806,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameJoinedChatgroupsGet"></a>
 # **orgNameAppNameUsersUsernameJoinedChatgroupsGet**
-> orgNameAppNameUsersUsernameJoinedChatgroupsGet(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameJoinedChatgroupsGet(orgName, appName, authorization, username)
 
 Get a List of Groups of User Joined
 
@@ -811,7 +825,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersUsernameJoinedChatgroupsGet(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameJoinedChatgroupsGet(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameJoinedChatgroupsGet");
     e.printStackTrace();
@@ -829,7 +844,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -842,7 +857,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameJoinedChatroomsGet"></a>
 # **orgNameAppNameUsersUsernameJoinedChatroomsGet**
-> orgNameAppNameUsersUsernameJoinedChatroomsGet(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameJoinedChatroomsGet(orgName, appName, authorization, username)
 
 Get All the Chat Rooms of User Joined
 
@@ -861,7 +876,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersUsernameJoinedChatroomsGet(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameJoinedChatroomsGet(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameJoinedChatroomsGet");
     e.printStackTrace();
@@ -879,7 +895,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -892,7 +908,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet"></a>
 # **orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet**
-> orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(orgName, appName, authorization, username, msgId)
+> String orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(orgName, appName, authorization, username, msgId)
 
 Get Offline Message Status
 
@@ -912,7 +928,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 String username = "username_example"; // String | 
 String msgId = "msgId_example"; // String | Message ID
 try {
-    apiInstance.orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(orgName, appName, authorization, username, msgId);
+    String result = apiInstance.orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(orgName, appName, authorization, username, msgId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet");
     e.printStackTrace();
@@ -931,7 +948,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -944,7 +961,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernamePasswordPut"></a>
 # **orgNameAppNameUsersUsernamePasswordPut**
-> orgNameAppNameUsersUsernamePasswordPut(orgName, appName, username, body, authorization)
+> String orgNameAppNameUsersUsernamePasswordPut(orgName, appName, username, body, authorization)
 
 Reset User&#39;s Password
 
@@ -964,7 +981,8 @@ String username = "username_example"; // String |
 NewPassword body = new NewPassword(); // NewPassword | Set a new password by using key \"newpassword\"
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 try {
-    apiInstance.orgNameAppNameUsersUsernamePasswordPut(orgName, appName, username, body, authorization);
+    String result = apiInstance.orgNameAppNameUsersUsernamePasswordPut(orgName, appName, username, body, authorization);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernamePasswordPut");
     e.printStackTrace();
@@ -983,7 +1001,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -996,7 +1014,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernamePut"></a>
 # **orgNameAppNameUsersUsernamePut**
-> orgNameAppNameUsersUsernamePut(orgName, appName, username, body, authorization)
+> String orgNameAppNameUsersUsernamePut(orgName, appName, username, body, authorization)
 
 Update User&#39;s APNs Display Name
 
@@ -1016,7 +1034,8 @@ String username = "username_example"; // String |
 Nickname body = new Nickname(); // Nickname | update APNs display name by key \"nickname\"
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 try {
-    apiInstance.orgNameAppNameUsersUsernamePut(orgName, appName, username, body, authorization);
+    String result = apiInstance.orgNameAppNameUsersUsernamePut(orgName, appName, username, body, authorization);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernamePut");
     e.printStackTrace();
@@ -1035,7 +1054,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -1048,7 +1067,7 @@ No authorization required
 
 <a name="orgNameAppNameUsersUsernameStatusGet"></a>
 # **orgNameAppNameUsersUsernameStatusGet**
-> orgNameAppNameUsersUsernameStatusGet(orgName, appName, authorization, username)
+> String orgNameAppNameUsersUsernameStatusGet(orgName, appName, authorization, username)
 
 Get User Online Status
 
@@ -1067,7 +1086,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 String username = "username_example"; // String | 
 try {
-    apiInstance.orgNameAppNameUsersUsernameStatusGet(orgName, appName, authorization, username);
+    String result = apiInstance.orgNameAppNameUsersUsernameStatusGet(orgName, appName, authorization, username);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#orgNameAppNameUsersUsernameStatusGet");
     e.printStackTrace();
@@ -1085,7 +1105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

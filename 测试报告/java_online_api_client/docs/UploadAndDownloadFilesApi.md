@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="orgNameAppNameChatfilesPost"></a>
 # **orgNameAppNameChatfilesPost**
-> orgNameAppNameChatfilesPost(orgName, appName, authorization, file, restrictAccess)
+> String orgNameAppNameChatfilesPost(orgName, appName, authorization, file, restrictAccess)
 
 Upload a File
 
@@ -30,7 +30,8 @@ String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2
 File file = new File(""); // File | 
 Boolean restrictAccess = ; // Boolean | \"restrict-access\" determines whether later the file require \"share-secret\" for access or allow public access. 
 try {
-    apiInstance.orgNameAppNameChatfilesPost(orgName, appName, authorization, file, restrictAccess);
+    String result = apiInstance.orgNameAppNameChatfilesPost(orgName, appName, authorization, file, restrictAccess);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UploadAndDownloadFilesApi#orgNameAppNameChatfilesPost");
     e.printStackTrace();
@@ -49,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -62,7 +63,7 @@ No authorization required
 
 <a name="orgNameAppNameChatfilesUuidGet"></a>
 # **orgNameAppNameChatfilesUuidGet**
-> orgNameAppNameChatfilesUuidGet(orgName, appName, authorization, uuid, shareSecret, thumbnail)
+> String orgNameAppNameChatfilesUuidGet(orgName, appName, authorization, uuid, shareSecret, thumbnail)
 
 Download a File
 
@@ -83,7 +84,8 @@ String uuid = "uuid_example"; // String | uuid, the file identifier, from previo
 String shareSecret = "K0nDupReEeaIDxMU2xxA1MQRdbbpSbahSXyalxCt8LFY1he0"; // String | share-secret from previous successful uploading response
 Boolean thumbnail = ; // Boolean | The request will return thumbnail if the tag of “thumbnail: true” is explicitly put in the header
 try {
-    apiInstance.orgNameAppNameChatfilesUuidGet(orgName, appName, authorization, uuid, shareSecret, thumbnail);
+    String result = apiInstance.orgNameAppNameChatfilesUuidGet(orgName, appName, authorization, uuid, shareSecret, thumbnail);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UploadAndDownloadFilesApi#orgNameAppNameChatfilesUuidGet");
     e.printStackTrace();
@@ -103,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

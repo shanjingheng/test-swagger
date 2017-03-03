@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="orgNameAppNameMessagesPost"></a>
 # **orgNameAppNameMessagesPost**
-> orgNameAppNameMessagesPost(orgName, appName, authorization, body)
+> String orgNameAppNameMessagesPost(orgName, appName, authorization, body)
 
 Send a Message
 
@@ -28,7 +28,8 @@ String appName = "appName_example"; // String | Application name
 String authorization = "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4"; // String | Bearer ${token}
 Msg body = new Msg(); // Msg | Message types: Text, image, audio message, video, command, etc. Please refer to the Hyphenate docs for further details about message body. https://docs.hyphenate.io/docs/post-messages
 try {
-    apiInstance.orgNameAppNameMessagesPost(orgName, appName, authorization, body);
+    String result = apiInstance.orgNameAppNameMessagesPost(orgName, appName, authorization, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MessagesApi#orgNameAppNameMessagesPost");
     e.printStackTrace();
@@ -46,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

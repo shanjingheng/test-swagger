@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="orgNameAppNameChatmessagesGet"></a>
 # **orgNameAppNameChatmessagesGet**
-> orgNameAppNameChatmessagesGet(orgName, appName, authorization, ql, limit, cursor)
+> String orgNameAppNameChatmessagesGet(orgName, appName, authorization, ql, limit, cursor)
 
 Get Message History
 
@@ -30,7 +30,8 @@ String ql = "select+*+where+timestamp>1403164734226"; // String | Get messages b
 String limit = "3"; // String | total number of messages per page by pagination at a time
 String cursor = ""; // String | Get messages by pagination. Obtained \"cursor\" from the previous GET messages call response.
 try {
-    apiInstance.orgNameAppNameChatmessagesGet(orgName, appName, authorization, ql, limit, cursor);
+    String result = apiInstance.orgNameAppNameChatmessagesGet(orgName, appName, authorization, ql, limit, cursor);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChatHistoryApi#orgNameAppNameChatmessagesGet");
     e.printStackTrace();
@@ -50,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

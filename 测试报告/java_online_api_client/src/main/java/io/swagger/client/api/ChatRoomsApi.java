@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -141,10 +141,12 @@ public class ChatRoomsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsChatroomIdDelete(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
-        orgNameAppNameChatroomsChatroomIdDeleteWithHttpInfo(orgName, appName, authorization, chatroomId);
+    public String orgNameAppNameChatroomsChatroomIdDelete(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsChatroomIdDeleteWithHttpInfo(orgName, appName, authorization, chatroomId);
+        return resp.getData();
     }
 
     /**
@@ -154,12 +156,13 @@ public class ChatRoomsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsChatroomIdDeleteWithHttpInfo(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsChatroomIdDeleteWithHttpInfo(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdDeleteCall(orgName, appName, authorization, chatroomId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -173,7 +176,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdDeleteAsync(String orgName, String appName, String authorization, String chatroomId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdDeleteAsync(String orgName, String appName, String authorization, String chatroomId, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -195,7 +198,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdDeleteCall(orgName, appName, authorization, chatroomId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsChatroomIdGet */
@@ -272,10 +276,12 @@ public class ChatRoomsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsChatroomIdGet(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
-        orgNameAppNameChatroomsChatroomIdGetWithHttpInfo(orgName, appName, authorization, chatroomId);
+    public String orgNameAppNameChatroomsChatroomIdGet(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsChatroomIdGetWithHttpInfo(orgName, appName, authorization, chatroomId);
+        return resp.getData();
     }
 
     /**
@@ -285,12 +291,13 @@ public class ChatRoomsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsChatroomIdGetWithHttpInfo(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsChatroomIdGetWithHttpInfo(String orgName, String appName, String authorization, String chatroomId) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdGetCall(orgName, appName, authorization, chatroomId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -304,7 +311,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdGetAsync(String orgName, String appName, String authorization, String chatroomId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdGetAsync(String orgName, String appName, String authorization, String chatroomId, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -326,7 +333,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdGetCall(orgName, appName, authorization, chatroomId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsChatroomIdPut */
@@ -409,10 +417,12 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param body  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsChatroomIdPut(String orgName, String appName, String authorization, String chatroomId, ModifyChatroom body) throws ApiException {
-        orgNameAppNameChatroomsChatroomIdPutWithHttpInfo(orgName, appName, authorization, chatroomId, body);
+    public String orgNameAppNameChatroomsChatroomIdPut(String orgName, String appName, String authorization, String chatroomId, ModifyChatroom body) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsChatroomIdPutWithHttpInfo(orgName, appName, authorization, chatroomId, body);
+        return resp.getData();
     }
 
     /**
@@ -423,12 +433,13 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param body  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsChatroomIdPutWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, ModifyChatroom body) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsChatroomIdPutWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, ModifyChatroom body) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdPutCall(orgName, appName, authorization, chatroomId, body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -443,7 +454,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdPutAsync(String orgName, String appName, String authorization, String chatroomId, ModifyChatroom body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdPutAsync(String orgName, String appName, String authorization, String chatroomId, ModifyChatroom body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -465,7 +476,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdPutCall(orgName, appName, authorization, chatroomId, body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsChatroomIdUsersPost */
@@ -548,10 +560,12 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param content  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsChatroomIdUsersPost(String orgName, String appName, String authorization, String chatroomId, UserNames content) throws ApiException {
-        orgNameAppNameChatroomsChatroomIdUsersPostWithHttpInfo(orgName, appName, authorization, chatroomId, content);
+    public String orgNameAppNameChatroomsChatroomIdUsersPost(String orgName, String appName, String authorization, String chatroomId, UserNames content) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsChatroomIdUsersPostWithHttpInfo(orgName, appName, authorization, chatroomId, content);
+        return resp.getData();
     }
 
     /**
@@ -562,12 +576,13 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param content  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsChatroomIdUsersPostWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, UserNames content) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsChatroomIdUsersPostWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, UserNames content) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersPostCall(orgName, appName, authorization, chatroomId, content, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -582,7 +597,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersPostAsync(String orgName, String appName, String authorization, String chatroomId, UserNames content, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersPostAsync(String orgName, String appName, String authorization, String chatroomId, UserNames content, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -604,7 +619,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersPostCall(orgName, appName, authorization, chatroomId, content, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsChatroomIdUsersUsernameDelete */
@@ -688,10 +704,12 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
-        orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, chatroomId, username);
+    public String orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteWithHttpInfo(orgName, appName, authorization, chatroomId, username);
+        return resp.getData();
     }
 
     /**
@@ -702,12 +720,13 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteCall(orgName, appName, authorization, chatroomId, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -722,7 +741,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String chatroomId, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteAsync(String orgName, String appName, String authorization, String chatroomId, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -744,7 +763,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersUsernameDeleteCall(orgName, appName, authorization, chatroomId, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsChatroomIdUsersUsernamePost */
@@ -828,10 +848,12 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param username  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsChatroomIdUsersUsernamePost(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
-        orgNameAppNameChatroomsChatroomIdUsersUsernamePostWithHttpInfo(orgName, appName, authorization, chatroomId, username);
+    public String orgNameAppNameChatroomsChatroomIdUsersUsernamePost(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsChatroomIdUsersUsernamePostWithHttpInfo(orgName, appName, authorization, chatroomId, username);
+        return resp.getData();
     }
 
     /**
@@ -842,12 +864,13 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param username  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsChatroomIdUsersUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsChatroomIdUsersUsernamePostWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, String username) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersUsernamePostCall(orgName, appName, authorization, chatroomId, username, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -862,7 +885,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersUsernamePostAsync(String orgName, String appName, String authorization, String chatroomId, String username, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersUsernamePostAsync(String orgName, String appName, String authorization, String chatroomId, String username, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -884,7 +907,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersUsernamePostCall(orgName, appName, authorization, chatroomId, username, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete */
@@ -968,10 +992,12 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param usernames Separate usernames by &#39;,&#39; (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(String orgName, String appName, String authorization, String chatroomId, String usernames) throws ApiException {
-        orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteWithHttpInfo(orgName, appName, authorization, chatroomId, usernames);
+    public String orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(String orgName, String appName, String authorization, String chatroomId, String usernames) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteWithHttpInfo(orgName, appName, authorization, chatroomId, usernames);
+        return resp.getData();
     }
 
     /**
@@ -982,12 +1008,13 @@ public class ChatRoomsApi {
      * @param authorization Bearer ${token} (required)
      * @param chatroomId  (required)
      * @param usernames Separate usernames by &#39;,&#39; (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, String usernames) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteWithHttpInfo(String orgName, String appName, String authorization, String chatroomId, String usernames) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteCall(orgName, appName, authorization, chatroomId, usernames, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1002,7 +1029,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteAsync(String orgName, String appName, String authorization, String chatroomId, String usernames, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteAsync(String orgName, String appName, String authorization, String chatroomId, String usernames, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1024,7 +1051,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsChatroomIdUsersUsernamesDeleteCall(orgName, appName, authorization, chatroomId, usernames, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsGet */
@@ -1094,10 +1122,12 @@ public class ChatRoomsApi {
      * @param orgName Organization ID (required)
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsGet(String orgName, String appName, String authorization) throws ApiException {
-        orgNameAppNameChatroomsGetWithHttpInfo(orgName, appName, authorization);
+    public String orgNameAppNameChatroomsGet(String orgName, String appName, String authorization) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsGetWithHttpInfo(orgName, appName, authorization);
+        return resp.getData();
     }
 
     /**
@@ -1106,12 +1136,13 @@ public class ChatRoomsApi {
      * @param orgName Organization ID (required)
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsGetWithHttpInfo(String orgName, String appName, String authorization) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsGetWithHttpInfo(String orgName, String appName, String authorization) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsGetCall(orgName, appName, authorization, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1124,7 +1155,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsGetAsync(String orgName, String appName, String authorization, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsGetAsync(String orgName, String appName, String authorization, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1146,7 +1177,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsGetCall(orgName, appName, authorization, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for orgNameAppNameChatroomsPost */
@@ -1222,10 +1254,12 @@ public class ChatRoomsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param body  (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void orgNameAppNameChatroomsPost(String orgName, String appName, String authorization, Chatroom body) throws ApiException {
-        orgNameAppNameChatroomsPostWithHttpInfo(orgName, appName, authorization, body);
+    public String orgNameAppNameChatroomsPost(String orgName, String appName, String authorization, Chatroom body) throws ApiException {
+        ApiResponse<String> resp = orgNameAppNameChatroomsPostWithHttpInfo(orgName, appName, authorization, body);
+        return resp.getData();
     }
 
     /**
@@ -1235,12 +1269,13 @@ public class ChatRoomsApi {
      * @param appName Application name (required)
      * @param authorization Bearer ${token} (required)
      * @param body  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> orgNameAppNameChatroomsPostWithHttpInfo(String orgName, String appName, String authorization, Chatroom body) throws ApiException {
+    public ApiResponse<String> orgNameAppNameChatroomsPostWithHttpInfo(String orgName, String appName, String authorization, Chatroom body) throws ApiException {
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsPostCall(orgName, appName, authorization, body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1254,7 +1289,7 @@ public class ChatRoomsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call orgNameAppNameChatroomsPostAsync(String orgName, String appName, String authorization, Chatroom body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call orgNameAppNameChatroomsPostAsync(String orgName, String appName, String authorization, Chatroom body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1276,7 +1311,8 @@ public class ChatRoomsApi {
         }
 
         com.squareup.okhttp.Call call = orgNameAppNameChatroomsPostCall(orgName, appName, authorization, body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

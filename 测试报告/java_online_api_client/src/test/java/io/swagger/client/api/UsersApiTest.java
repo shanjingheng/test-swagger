@@ -82,8 +82,8 @@ public class    UsersApiTest {
         String authorization = "Bearer YWMtoryeQvzBEeaWVYdmKYoGxAAAAVuzi6yNveF794_H9BBdabQxJxhGIhjqXwM";
         String limit = "3";
         String cursor = "LTgzNDAxMjM3OTpreS0yeXBSSkVlYWZZODl3bXppMTFn";
-        Object obj = api.orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor);
-        System.out.print(obj);
+        String result = api.orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor);
+        System.out.print(result);
 
 
 
