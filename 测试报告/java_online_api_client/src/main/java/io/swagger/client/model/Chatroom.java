@@ -35,7 +35,7 @@ import io.swagger.client.model.UserName;
 /**
  * Chatroom
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-03T17:40:42.166+08:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-03T17:45:45.224+08:00")
 public class Chatroom   {
   @SerializedName("name")
   private String name = null;

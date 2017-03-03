@@ -147,7 +147,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [Cat](docs/Cat.md)
  - [Chatroom](docs/Chatroom.md)
  - [Group](docs/Group.md)
  - [ModifyChatroom](docs/ModifyChatroom.md)
