@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -58,7 +58,7 @@ public class GroupsApiTest {
         String orgName = null;
         String appName = null;
         String authorization = null;
-        // api.orgNameAppNameChatgroupsGet(orgName, appName, authorization);
+        // String response = api.orgNameAppNameChatgroupsGet(orgName, appName, authorization);
 
         // TODO: test validations
     }
@@ -77,7 +77,7 @@ public class GroupsApiTest {
         String appName = null;
         String authorization = null;
         String groupId = null;
-        // api.orgNameAppNameChatgroupsGroupIdBlocksUsersGet(orgName, appName, authorization, groupId);
+        // String response = api.orgNameAppNameChatgroupsGroupIdBlocksUsersGet(orgName, appName, authorization, groupId);
 
         // TODO: test validations
     }
@@ -97,7 +97,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         UserNames body = null;
-        // api.orgNameAppNameChatgroupsGroupIdBlocksUsersPost(orgName, appName, authorization, groupId, body);
+        // String response = api.orgNameAppNameChatgroupsGroupIdBlocksUsersPost(orgName, appName, authorization, groupId, body);
 
         // TODO: test validations
     }
@@ -117,7 +117,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         String username = null;
-        // api.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(orgName, appName, authorization, groupId, username);
+        // String response = api.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernameDelete(orgName, appName, authorization, groupId, username);
 
         // TODO: test validations
     }
@@ -137,7 +137,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         String username = null;
-        // api.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(orgName, appName, authorization, groupId, username);
+        // String response = api.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamePost(orgName, appName, authorization, groupId, username);
 
         // TODO: test validations
     }
@@ -157,7 +157,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         String usernames = null;
-        // api.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(orgName, appName, authorization, groupId, usernames);
+        // String response = api.orgNameAppNameChatgroupsGroupIdBlocksUsersUsernamesDelete(orgName, appName, authorization, groupId, usernames);
 
         // TODO: test validations
     }
@@ -176,7 +176,7 @@ public class GroupsApiTest {
         String appName = null;
         String authorization = null;
         String groupId = null;
-        // api.orgNameAppNameChatgroupsGroupIdDelete(orgName, appName, authorization, groupId);
+        // String response = api.orgNameAppNameChatgroupsGroupIdDelete(orgName, appName, authorization, groupId);
 
         // TODO: test validations
     }
@@ -196,7 +196,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         ModifyGroup body = null;
-        // api.orgNameAppNameChatgroupsGroupIdPut(orgName, appName, authorization, groupId, body);
+        // String response = api.orgNameAppNameChatgroupsGroupIdPut(orgName, appName, authorization, groupId, body);
 
         // TODO: test validations
     }
@@ -215,7 +215,7 @@ public class GroupsApiTest {
         String appName = null;
         String authorization = null;
         String groupId = null;
-        // api.orgNameAppNameChatgroupsGroupIdUsersGet(orgName, appName, authorization, groupId);
+        // String response = api.orgNameAppNameChatgroupsGroupIdUsersGet(orgName, appName, authorization, groupId);
 
         // TODO: test validations
     }
@@ -235,7 +235,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         String members = null;
-        // api.orgNameAppNameChatgroupsGroupIdUsersMembersDelete(orgName, appName, authorization, groupId, members);
+        // String response = api.orgNameAppNameChatgroupsGroupIdUsersMembersDelete(orgName, appName, authorization, groupId, members);
 
         // TODO: test validations
     }
@@ -255,7 +255,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         UserNames body = null;
-        // api.orgNameAppNameChatgroupsGroupIdUsersPost(orgName, appName, authorization, groupId, body);
+        // String response = api.orgNameAppNameChatgroupsGroupIdUsersPost(orgName, appName, authorization, groupId, body);
 
         // TODO: test validations
     }
@@ -275,7 +275,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         String username = null;
-        // api.orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(orgName, appName, authorization, groupId, username);
+        // String response = api.orgNameAppNameChatgroupsGroupIdUsersUsernameDelete(orgName, appName, authorization, groupId, username);
 
         // TODO: test validations
     }
@@ -295,7 +295,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupId = null;
         String username = null;
-        // api.orgNameAppNameChatgroupsGroupIdUsersUsernamePost(orgName, appName, authorization, groupId, username);
+        // String response = api.orgNameAppNameChatgroupsGroupIdUsersUsernamePost(orgName, appName, authorization, groupId, username);
 
         // TODO: test validations
     }
@@ -314,7 +314,7 @@ public class GroupsApiTest {
         String appName = null;
         String authorization = null;
         String groupIds = null;
-        // api.orgNameAppNameChatgroupsGroupIdsGet(orgName, appName, authorization, groupIds);
+        // String response = api.orgNameAppNameChatgroupsGroupIdsGet(orgName, appName, authorization, groupIds);
 
         // TODO: test validations
     }
@@ -334,7 +334,7 @@ public class GroupsApiTest {
         String authorization = null;
         String groupid = null;
         NewOwner body = null;
-        // api.orgNameAppNameChatgroupsGroupidPut(orgName, appName, authorization, groupid, body);
+        // String response = api.orgNameAppNameChatgroupsGroupidPut(orgName, appName, authorization, groupid, body);
 
         // TODO: test validations
     }
@@ -353,7 +353,7 @@ public class GroupsApiTest {
         String appName = null;
         String authorization = null;
         Group body = null;
-        // api.orgNameAppNameChatgroupsPost(orgName, appName, authorization, body);
+        // String response = api.orgNameAppNameChatgroupsPost(orgName, appName, authorization, body);
 
         // TODO: test validations
     }

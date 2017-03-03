@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -26,14 +26,12 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
 import io.swagger.client.model.UserNames;
 import io.swagger.client.model.RegisterUsers;
 import io.swagger.client.model.NewPassword;
 import io.swagger.client.model.Nickname;
 import org.junit.Test;
 
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +40,7 @@ import java.util.Map;
 /**
  * API tests for UsersApi
  */
-public class    UsersApiTest {
+public class UsersApiTest {
 
     private final UsersApi api = new UsersApi();
 
@@ -62,7 +60,7 @@ public class    UsersApiTest {
         String authorization = null;
         String limit = null;
         String cursor = null;
-        // api.orgNameAppNameUsersDelete(orgName, appName, authorization, limit, cursor);
+        // String response = api.orgNameAppNameUsersDelete(orgName, appName, authorization, limit, cursor);
 
         // TODO: test validations
     }
@@ -77,16 +75,12 @@ public class    UsersApiTest {
      */
     @Test
     public void orgNameAppNameUsersGetTest() throws ApiException {
-        String orgName = "1122161011178276";
-        String appName = "testapp";
-        String authorization = "Bearer YWMtoryeQvzBEeaWVYdmKYoGxAAAAVuzi6yNveF794_H9BBdabQxJxhGIhjqXwM";
-        String limit = "3";
-        String cursor = "LTgzNDAxMjM3OTpreS0yeXBSSkVlYWZZODl3bXppMTFn";
-        String result = api.orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor);
-        System.out.print(result);
-
-
-
+        String orgName = null;
+        String appName = null;
+        String authorization = null;
+        String limit = null;
+        String cursor = null;
+        // String response = api.orgNameAppNameUsersGet(orgName, appName, authorization, limit, cursor);
 
         // TODO: test validations
     }
@@ -106,7 +100,7 @@ public class    UsersApiTest {
         String authorization = null;
         String ownerUsername = null;
         String blockedUsername = null;
-        // api.orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(orgName, appName, authorization, ownerUsername, blockedUsername);
+        // String response = api.orgNameAppNameUsersOwnerUsernameBlocksUsersBlockedUsernameDelete(orgName, appName, authorization, ownerUsername, blockedUsername);
 
         // TODO: test validations
     }
@@ -125,7 +119,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String ownerUsername = null;
-        // api.orgNameAppNameUsersOwnerUsernameBlocksUsersGet(orgName, appName, authorization, ownerUsername);
+        // String response = api.orgNameAppNameUsersOwnerUsernameBlocksUsersGet(orgName, appName, authorization, ownerUsername);
 
         // TODO: test validations
     }
@@ -145,7 +139,7 @@ public class    UsersApiTest {
         String authorization = null;
         String ownerUsername = null;
         UserNames usernames = null;
-        // api.orgNameAppNameUsersOwnerUsernameBlocksUsersPost(orgName, appName, authorization, ownerUsername, usernames);
+        // String response = api.orgNameAppNameUsersOwnerUsernameBlocksUsersPost(orgName, appName, authorization, ownerUsername, usernames);
 
         // TODO: test validations
     }
@@ -165,7 +159,7 @@ public class    UsersApiTest {
         String authorization = null;
         String ownerUsername = null;
         String friendUsername = null;
-        // api.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(orgName, appName_, authorization, ownerUsername, friendUsername);
+        // String response = api.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernameDelete(orgName, appName_, authorization, ownerUsername, friendUsername);
 
         // TODO: test validations
     }
@@ -185,7 +179,7 @@ public class    UsersApiTest {
         String authorization = null;
         String ownerUsername = null;
         String friendUsername = null;
-        // api.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(orgName, appName, authorization, ownerUsername, friendUsername);
+        // String response = api.orgNameAppNameUsersOwnerUsernameContactsUsersFriendUsernamePost(orgName, appName, authorization, ownerUsername, friendUsername);
 
         // TODO: test validations
     }
@@ -204,7 +198,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String ownerUsername = null;
-        // api.orgNameAppNameUsersOwnerUsernameContactsUsersGet(orgName, appName, authorization, ownerUsername);
+        // String response = api.orgNameAppNameUsersOwnerUsernameContactsUsersGet(orgName, appName, authorization, ownerUsername);
 
         // TODO: test validations
     }
@@ -223,7 +217,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String ownerUsername = null;
-        // api.orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(orgName, appName, authorization, ownerUsername);
+        // String response = api.orgNameAppNameUsersOwnerUsernameOfflineMsgCountGet(orgName, appName, authorization, ownerUsername);
 
         // TODO: test validations
     }
@@ -242,7 +236,7 @@ public class    UsersApiTest {
         String appName = null;
         RegisterUsers body = null;
         String authorization = null;
-        // api.orgNameAppNameUsersPost(orgName, appName, body, authorization);
+        // String response = api.orgNameAppNameUsersPost(orgName, appName, body, authorization);
 
         // TODO: test validations
     }
@@ -261,7 +255,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameActivatePost(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameActivatePost(orgName, appName, authorization, username);
 
         // TODO: test validations
     }
@@ -280,7 +274,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameDeactivatePost(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameDeactivatePost(orgName, appName, authorization, username);
 
         // TODO: test validations
     }
@@ -299,7 +293,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameDelete(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameDelete(orgName, appName, authorization, username);
 
         // TODO: test validations
     }
@@ -318,7 +312,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameDisconnectGet(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameDisconnectGet(orgName, appName, authorization, username);
 
         // TODO: test validations
     }
@@ -337,7 +331,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameGet(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameGet(orgName, appName, authorization, username);
 
         // TODO: test validations
     }
@@ -356,7 +350,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameJoinedChatgroupsGet(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameJoinedChatgroupsGet(orgName, appName, authorization, username);
 
         // TODO: test validations
     }
@@ -375,7 +369,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameJoinedChatroomsGet(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameJoinedChatroomsGet(orgName, appName, authorization, username);
 
         // TODO: test validations
     }
@@ -395,7 +389,7 @@ public class    UsersApiTest {
         String authorization = null;
         String username = null;
         String msgId = null;
-        // api.orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(orgName, appName, authorization, username, msgId);
+        // String response = api.orgNameAppNameUsersUsernameOfflineMsgStatusMsgIdGet(orgName, appName, authorization, username, msgId);
 
         // TODO: test validations
     }
@@ -415,7 +409,7 @@ public class    UsersApiTest {
         String username = null;
         NewPassword body = null;
         String authorization = null;
-        // api.orgNameAppNameUsersUsernamePasswordPut(orgName, appName, username, body, authorization);
+        // String response = api.orgNameAppNameUsersUsernamePasswordPut(orgName, appName, username, body, authorization);
 
         // TODO: test validations
     }
@@ -435,7 +429,7 @@ public class    UsersApiTest {
         String username = null;
         Nickname body = null;
         String authorization = null;
-        // api.orgNameAppNameUsersUsernamePut(orgName, appName, username, body, authorization);
+        // String response = api.orgNameAppNameUsersUsernamePut(orgName, appName, username, body, authorization);
 
         // TODO: test validations
     }
@@ -454,7 +448,7 @@ public class    UsersApiTest {
         String appName = null;
         String authorization = null;
         String username = null;
-        // api.orgNameAppNameUsersUsernameStatusGet(orgName, appName, authorization, username);
+        // String response = api.orgNameAppNameUsersUsernameStatusGet(orgName, appName, authorization, username);
 
         // TODO: test validations
     }

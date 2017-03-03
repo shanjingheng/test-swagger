@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -58,7 +58,7 @@ public class ChatRoomsApiTest {
         String appName = null;
         String authorization = null;
         String chatroomId = null;
-        // api.orgNameAppNameChatroomsChatroomIdDelete(orgName, appName, authorization, chatroomId);
+        // String response = api.orgNameAppNameChatroomsChatroomIdDelete(orgName, appName, authorization, chatroomId);
 
         // TODO: test validations
     }
@@ -77,7 +77,7 @@ public class ChatRoomsApiTest {
         String appName = null;
         String authorization = null;
         String chatroomId = null;
-        // api.orgNameAppNameChatroomsChatroomIdGet(orgName, appName, authorization, chatroomId);
+        // String response = api.orgNameAppNameChatroomsChatroomIdGet(orgName, appName, authorization, chatroomId);
 
         // TODO: test validations
     }
@@ -97,7 +97,7 @@ public class ChatRoomsApiTest {
         String authorization = null;
         String chatroomId = null;
         ModifyChatroom body = null;
-        // api.orgNameAppNameChatroomsChatroomIdPut(orgName, appName, authorization, chatroomId, body);
+        // String response = api.orgNameAppNameChatroomsChatroomIdPut(orgName, appName, authorization, chatroomId, body);
 
         // TODO: test validations
     }
@@ -117,7 +117,7 @@ public class ChatRoomsApiTest {
         String authorization = null;
         String chatroomId = null;
         UserNames content = null;
-        // api.orgNameAppNameChatroomsChatroomIdUsersPost(orgName, appName, authorization, chatroomId, content);
+        // String response = api.orgNameAppNameChatroomsChatroomIdUsersPost(orgName, appName, authorization, chatroomId, content);
 
         // TODO: test validations
     }
@@ -137,7 +137,7 @@ public class ChatRoomsApiTest {
         String authorization = null;
         String chatroomId = null;
         String username = null;
-        // api.orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(orgName, appName, authorization, chatroomId, username);
+        // String response = api.orgNameAppNameChatroomsChatroomIdUsersUsernameDelete(orgName, appName, authorization, chatroomId, username);
 
         // TODO: test validations
     }
@@ -157,7 +157,7 @@ public class ChatRoomsApiTest {
         String authorization = null;
         String chatroomId = null;
         String username = null;
-        // api.orgNameAppNameChatroomsChatroomIdUsersUsernamePost(orgName, appName, authorization, chatroomId, username);
+        // String response = api.orgNameAppNameChatroomsChatroomIdUsersUsernamePost(orgName, appName, authorization, chatroomId, username);
 
         // TODO: test validations
     }
@@ -177,7 +177,7 @@ public class ChatRoomsApiTest {
         String authorization = null;
         String chatroomId = null;
         String usernames = null;
-        // api.orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(orgName, appName, authorization, chatroomId, usernames);
+        // String response = api.orgNameAppNameChatroomsChatroomIdUsersUsernamesDelete(orgName, appName, authorization, chatroomId, usernames);
 
         // TODO: test validations
     }
@@ -195,7 +195,7 @@ public class ChatRoomsApiTest {
         String orgName = null;
         String appName = null;
         String authorization = null;
-        // api.orgNameAppNameChatroomsGet(orgName, appName, authorization);
+        // String response = api.orgNameAppNameChatroomsGet(orgName, appName, authorization);
 
         // TODO: test validations
     }
@@ -214,7 +214,7 @@ public class ChatRoomsApiTest {
         String appName = null;
         String authorization = null;
         Chatroom body = null;
-        // api.orgNameAppNameChatroomsPost(orgName, appName, authorization, body);
+        // String response = api.orgNameAppNameChatroomsPost(orgName, appName, authorization, body);
 
         // TODO: test validations
     }

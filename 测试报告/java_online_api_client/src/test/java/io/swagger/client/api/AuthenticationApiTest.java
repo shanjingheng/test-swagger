@@ -1,6 +1,6 @@
 /**
- * Hyphenate REST APIs
- * Hyphenate Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Hyphenate Server Integration](http://docs.hyphenate.io/v1.0/docs/server-overview).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Hyphenate console](https://console.hyphenate.io/).                          `app_name` is the unique app ID created when you new application in [Hyphenate console](https://console.hyphenate.io/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
+ * Easemob REST APIs
+ * Easemob Server REST API Swagger is designated to provide better documentation and thorough interfaces for testing. For more details about server implementation, request rate limitation, etc, please visit [Easemob Server Integration](http://docs.easemob.com/im/100serverintegration/10intro).    **Note:**  `org_ID` is the unique ID of the organization created when you first registered [Easemob console](https://console.easemob.com/).                          `app_name` is the unique app ID created when you new application in [Easemob console](https://console.easemob.com/).            `Authorization token` is required for most API requests as part of requesting header in the format `Bearer ${token}`. You can obtain the token via [/{org_name}/{app_name}/token](https://docs.hyphenate.io/docs/server-overview#section-request-authentication-token).                                             
  *
  * OpenAPI spec version: 1.0.2
  * 
@@ -25,9 +25,7 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
 import io.swagger.client.model.Token;
 import org.junit.Test;
 
@@ -54,11 +52,11 @@ public class AuthenticationApiTest {
      */
     @Test
     public void orgNameAppNameTokenPostTest() throws ApiException {
-        String orgName = "1122161011178276";
-        String appName = "testapp";
-        Token body = new Token().grantType("client_credentials").clientId("YXA6Irz_oI-GEead-FFvbfaMbQ").clientSecret("YXA6VsR5JypETS3iPFvNNxYklmho0Vw");
-        String result = api.orgNameAppNameTokenPost(orgName, appName, body);
-        System.out.println(result);
+        String orgName = null;
+        String appName = null;
+        Token body = null;
+        // String response = api.orgNameAppNameTokenPost(orgName, appName, body);
+
         // TODO: test validations
     }
     
