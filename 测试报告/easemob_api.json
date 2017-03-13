@@ -1522,6 +1522,78 @@
                 "sortWeight": 0
             }
         },
+          "/{org_name}/{app_name}/chatmessages/{time}": {
+            "get": {
+                "tags": [
+                    "Chat History"
+                ],
+                "summary": "Get Message History by Hour",
+                "description": "",
+                "schemes": [
+                    "https"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "org_name",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "testorg",
+                        "format": ""
+                    },
+                    {
+                        "name": "app_name",
+                        "in": "path",
+                        "description": "Application name",
+                        "required": true,
+                        "type": "string",
+                        "default": "testapp",
+                        "format": ""
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer ${token}",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer YWMtLU9T4JRGEea0-Vvai3EzjAAAAVkGz4dZKNSpsVdRvVix2OfSm42w5-IaUL4",
+                        "format": ""
+                    },
+                    {
+                        "name": "time",
+                        "in": "path",
+                        "description": "Format as (YYYYMMDDHH)",
+                        "required": true,
+                        "type": "string",
+                        "default": "12/10/2016",
+                        "format": ""
+                    }
+                ],
+                "responses": {
+                    "200":{"description":"OK","schema":{"type":"string"}},
+                    "400": {
+                        "description": "Message history has expired or has not been generated",
+                        "sortWeight": 0
+                    },
+                    "401": {
+                        "description": "unauthorized [without token, token error, token expired]",
+                        "sortWeight": 0
+                    },
+                    "5xx": {
+                        "description": "Various, see: [HTTP Error Codes](https://docs.hyphenate.io/docs/error-codes)",
+                        "sortWeight": 0
+                    }
+                },
+                "sortWeight": 0
+            }
+        },
         "/{org_name}/{app_name}/chatrooms": {
             "get": {
                 "tags": [

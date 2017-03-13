@@ -11,3 +11,4 @@
 >###说明
 >+  应在服务器接口中添加注解response=200的相关描述和返回值类型，否则自动生成的代码默认泛型为Void拿不到返回的json数据
 >+  手动修改json文件测试两个接口，结果正常
+>+  少{org_name}/{app_name}/chatmessages/{time}接口，已手动补上
